@@ -55,6 +55,10 @@ body {
     color: #707070;
 }
 
+.text-black {
+    color: #000000;
+}
+
 .header {
     height: 108px;
     display: flex;
@@ -116,6 +120,8 @@ body {
 .block-1__title {
     margin: 50px;
     font-size: 48px;
+    font-weight: 900;
+    text-align: center;
 }
 
 .block-1__card {
@@ -131,6 +137,47 @@ body {
 .block-1__card .icon {
     width: 84px;
     height: 84px;
+}
+
+.contact-wrapper {
+    width: 730px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: black;
+}
+
+.contact-wrapper label {
+    position: relative;
+    top: 10px;
+}
+
+.contact-wrapper button {
+    width: 350px;
+    align-self: center;
+    background-color: var(--red-lighter);
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 16px;
+    margin: 40px;
+    border: 0;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.contact-wrapper button:hover {
+    background-color: var(--red);
+}
+
+.contact-wrapper button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.contact-wrapper input[type='text'],
+.contact-wrapper textarea {
+    padding: 8px 16px;
 }
 
 .card-wrapper {
@@ -171,20 +218,20 @@ body {
     text-align: center;
 }
 
-.customer{
+.customer {
     border-radius: 8px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.6);
 }
 
-.customer img{
-    border-radius: 8px  8px 0 0;
+.customer img {
+    border-radius: 8px 8px 0 0;
 }
 
 .customer .comment {
     min-height: 100px;
 }
 
-.customer-content{
+.customer-content {
     padding: 16px;
     display: flex;
     gap: 10px;

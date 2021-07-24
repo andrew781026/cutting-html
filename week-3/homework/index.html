@@ -19,6 +19,7 @@
     <title>賣眼鏡歐 !</title>
 </head>
 <body>
+<!-- TODO : header 還需要處理 rwd -->
 <header class="header">
     <img src="./img/logo.png" alt="logo">
     <div class="flex-1"></div>
@@ -63,13 +64,29 @@
     </div>
 </div>
 <div class="block-1 bg-woman">
-    <div class="container gap-20">
+    <div class="container">
         <span class="block-1__title text-bold text-white">聯名設計鏡框</span>
 
         <div class="famous-wrapper">
             <div class="famous-product" v-for="prod in famousProducts" :key="prod.id">
                 <img :src="prod.img" alt="product" class="w-full">
                 <span>{{prod.text}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-1">
+    <div class="container">
+        <span class="block-1__title text-bold">顧客推薦</span>
+
+        <div class="card-wrapper">
+            <div class="customer" v-for="customer in customers" :key="customer.name">
+                <img class="w-full" :src="customer.avatar" alt="customer">
+                <div class="customer-content">
+                    <span>{{customer.name}}</span>
+                    <span class="comment">{{customer.comment}}</span>
+                    <span>{{customer.date}}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -148,6 +165,35 @@
                         text: 'YOUTH',
                     },
                 ],
+
+                customers: [
+                    {
+                        avatar: './img/rec-1.png',
+                        name: 'Jessy',
+                        comment: '眼鏡品質優良，下次還會想來這邊購買！',
+                        date: '2021/06/20',
+                    },
+                    {
+                        avatar: './img/rec-2.png',
+                        name: '凱倫',
+                        comment: '做工細緻、鏡架很輕盈，待久也不會覺得有負擔，推薦給大家！',
+                        date: '2021/04/18',
+                    },
+                    {
+                        avatar: './img/rec-3.png',
+                        name: '悠悠',
+                        comment: '謝謝客服人員的詳細回答，成功買到了喜歡的眼鏡，下次會再回購！',
+                        date: '2020/12/25',
+                    },
+                    {
+                        avatar: './img/rec-4.png',
+                        name: 'Kyuan',
+                        comment: '服務很好，品質沒有任何問題，非常喜歡。',
+                        date: '2020/10/31',
+                    },
+
+                ],
+
             }
         }
     };

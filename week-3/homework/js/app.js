@@ -26,7 +26,7 @@ const App = {
                 },
                 {
                     id: 'feature-4',
-                    icon: './img/icon-dollar.svg',
+                    icon: './img/icon-glasses.svg',
                     title: '關於鏡片',
                     description: '使用世界知名頂級品牌，抗UV、防汙鍍膜薄型非球面鏡片。',
                 },

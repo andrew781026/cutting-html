@@ -20,7 +20,7 @@
 .checkmark {
     position: absolute;
     left: 0;
-    bottom: 0;
+    top: -2px;
     height: 25px;
     width: 25px;
     border: 1px solid #565656;
@@ -29,19 +29,19 @@
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+.checkmark::after {
     content: "";
     position: absolute;
     display: none;
 }
 
 /* Show the checkmark when checked */
-.check-wrap input:checked ~ .checkmark:after {
+.check-wrap input:checked ~ .checkmark::after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.check-wrap .checkmark:after {
+.check-wrap .checkmark::after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -51,7 +51,7 @@
     transform: rotate(45deg);
 }
 
-.check-wrap .checkmark:not(.circle):after {
+.check-wrap .checkmark:not(.circle)::after {
     border-width: 0 2px 2px 0;
     transform: rotate(45deg) scale(1.5) translate(-0.5px, -1px);
 }

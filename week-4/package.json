@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build --env prod",
-    "deploy": "gulp deploy --env prod",
+    "deploy": "npm run build && gulp deploy --env prod",
     "start": "gulp default"
   },
   "engines": {
@@ -17,6 +17,7 @@
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "autoprefixer": "^9.6.0",
     "browser-sync": "^2.26.7",
     "ejs": "^3.1.2",
@@ -34,6 +35,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "minimist": "^1.2.0",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
   }
 }

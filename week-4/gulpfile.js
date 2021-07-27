@@ -39,8 +39,24 @@ function layoutHTML() {
 }
 
 function sass() {
+    // add tailwind using : https://gist.github.com/BaronVonPerko/27cd6d5b8c25f4ceb3b04313f56ca75e
+    const tailwindcss = require('tailwindcss');
+    const purgecss = require("@fullhuman/postcss-purgecss");
+
     const plugins = [
-        autoprefixer(),
+        autoprefixer(),                                //  設定 autoprefixer
+        tailwindcss('./tailwind.config.js'),    //  設定 tailwind
+
+        // add purge-css using : https://gist.github.com/taylorbryant/91fc05b12472a88a8b6494f610647cd4
+        ...(options.env === "prod"
+            ? [
+                purgecss({
+                    content: ["./app/**/*.ejs", "./app/**/*.html"],
+                    defaultExtractor: content =>
+                        content.match(/[\w-/:]+(?<!:)/g) || []
+                })
+            ]
+            : [])
     ];
     return gulp.src(envOptions.style.src)
         .pipe($.sourcemaps.init())

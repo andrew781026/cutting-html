@@ -1,5 +1,10 @@
 node_modules
-/dist
 
 # webstorm folder
 .idea
+
+# gen
+dist
+package-lock.json
+configs.js
+/week-4/configs.js

@@ -6,8 +6,83 @@ current: index
 ---
 
 
-<h1 class="m-4">
-  這是一段話
-</h1>
+<div class="banner">
+  <div class="container items-end">
+    <span class="banner__title">Promise-Desert 2020 早春系列</span>
+    <span class="banner__content text-bold">看得清，才能看得遠</span>
+  </div>
+</div>
+<div class="block-1">
+  <div class="container">
+    <span class="block-1__title">用專業的心，做專業的事</span>
+    <div class="card-wrapper">
+      <div class="features" v-for="feature in features" :key="feature.id">
+        <img class="icon" :src="feature.icon" alt="icon">
+        <div class="feature_title">{{feature.title}}</div>
+        <div class="text-left">{{feature.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="block-1">
+  <div class="container gap-20">
+    <span class="block-1__title">經典系列鏡框</span>
 
-<div class="box"></div>
+    <div class="classic-product" v-for="prod in classicProducts" :key="prod.id">
+      <img :src="prod.img" alt="product">
+      <div class="classic-product__text">
+        <img :src="prod.icon" alt="icon">
+        <span>{{prod.text}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="block-1 bg-woman">
+  <div class="container">
+    <span class="block-1__title text-white">聯名設計鏡框</span>
+
+    <div class="famous-wrapper">
+      <div class="famous-product" v-for="prod in famousProducts" :key="prod.id">
+        <img :src="prod.img" alt="product" class="w-full">
+        <span>{{prod.text}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="block-1">
+  <div class="container">
+    <span class="block-1__title">顧客推薦</span>
+
+    <div class="card-wrapper">
+      <div class="customer" v-for="customer in customers" :key="customer.name">
+        <img class="w-full" :src="customer.avatar" alt="customer">
+        <div class="customer-content">
+          <span>{{customer.name}}</span>
+          <span class="comment">{{customer.comment}}</span>
+          <span>{{customer.date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="block-1">
+  <div class="contact-wrapper">
+    <span class="block-1__title">聯絡我們</span>
+
+    <span>我們相當重視您的意見，若您有任何疑問，可先參考「常見問題」，若仍有任何問題，請填妥以下資料，我們會在近期與您聯繫。</span>
+    <label for="name">姓名</label>
+    <input type="text" id="name" placeholder="陳小明">
+
+    <label for="phone">聯絡電話</label>
+    <input type="text" id="phone" placeholder="0912-345-678">
+
+    <label for="email">電子郵件</label>
+    <input type="text" id="email" placeholder="example@email.com">
+
+    <label for="comment">意見反應</label>
+    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="請輸入您的意見"></textarea>
+
+    <green-check text="我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料。"></green-check>
+    <button>確認送出</button>
+  </div>
+</div>

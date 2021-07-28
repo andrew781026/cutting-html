@@ -11,13 +11,20 @@ let envOptions = {
         src: [
             `${srcPath}/**/*`,
             `!${srcPath}/assets/js/**/*.js`,
+            `!${srcPath}/assets/images/**/*`,
             `!${srcPath}/assets/style/**/*.scss`,
             `!${srcPath}/assets/style/**/*.sass`,
-            `!${srcPath}/styles.css`,
+            `!${srcPath}/assets/style/**/*.css`,
             `!${srcPath}/**/*.ejs`,
             `!${srcPath}/**/*.html`,
         ],
         path: distPath,
+    },
+    copyImgs: {
+        src: [
+            `${srcPath}/assets/images/**/*`,
+        ],
+        path: `${distPath}/img`,
     },
     html: {
         src: [
@@ -32,28 +39,29 @@ let envOptions = {
         src: [
             `${srcPath}/assets/style/**/*.scss`,
             `${srcPath}/assets/style/**/*.sass`,
-            `${srcPath}/styles.css`,
+            `${srcPath}/assets/style/**/*.css`,
         ],
-        path: `${distPath}/assets/style`,
+        path: `${distPath}/css`,
+        final: `${distPath}/style`,
     },
     javascript: {
         src: [
             `${srcPath}/assets/js/**/*.js`
         ],
         concat: 'all.js',
-        path: `${distPath}/assets/js`,
+        path: `${distPath}/js`,
     },
     vendors: {
         src: [
-            `${nodePath}/jquery/dist/**/jquery.min.js`,
+            `${nodePath}/vue/dist/vue.global.js`,
         ],
         concat: 'vendors.js',
-        path: `${distPath}/assets/js`,
+        path: `${distPath}/js`,
     },
     img: {
         src: [
             `${srcPath}/assets/images/**/*`,
-        ],
+        ]
     },
     clean: {
         src: distPath,

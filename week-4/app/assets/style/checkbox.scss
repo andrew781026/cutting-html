@@ -1,0 +1,93 @@
+/* The container */
+.check-wrap {
+    display: inline;
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.check-wrap input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: -2px;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #565656;
+    border-radius: 4px;
+    transform: scale(0.8);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.check-wrap input:checked ~ .checkmark::after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.check-wrap .checkmark::after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.check-wrap .checkmark:not(.circle)::after {
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(1.5) translate(-0.5px, -1px);
+}
+
+/* On mouse-over, add a grey background color */
+:not([disabled]) .check-wrap:hover input ~ .checkmark {
+    background-color: #efefef;
+}
+
+green-check .check-wrap input:checked ~ .checkmark {
+    background-color: #60ba9a;
+    border-color: #60ba9a;
+}
+
+green-check:not([disabled]) .check-wrap:hover input:checked ~ .checkmark {
+    background-color: #95d1bc;
+    border-color: #95d1bc;
+}
+
+green-check:disabled > .check-wrap {
+    cursor: not-allowed;
+    display: inline;
+    position: relative;
+    padding-left: 28px;
+    user-select: none;
+}
+
+green-check:disabled > .check-wrap font {
+    color: #eee;
+}
+
+green-check:disabled > .check-wrap .checkmark {
+    border: 1px solid #eee;
+    background-color: #eee;
+}
+
+green-check:active > .check-wrap font {
+    color: #585858;
+}

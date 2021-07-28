@@ -5,6 +5,8 @@ const minimist = require('minimist');
 const browserSync = require('browser-sync').create();
 const {envOptions} = require('./envOptions');
 const ghpages = require('./ghpages');
+const purgecss = require('gulp-purgecss');
+// const purgecss = require("@fullhuman/postcss-purgecss");
 
 let options = minimist(process.argv.slice(2), envOptions);
 
@@ -14,6 +16,16 @@ console.log(`Current mode：${options.env}`);
 function copyFile() {
     return gulp.src(envOptions.copyFile.src)
         .pipe(gulp.dest(envOptions.copyFile.path))
+        .pipe(
+            browserSync.reload({
+                stream: true,
+            }),
+        );
+}
+
+function copyImages() {
+    return gulp.src(envOptions.copyImgs.src)
+        .pipe(gulp.dest(envOptions.copyImgs.path))
         .pipe(
             browserSync.reload({
                 stream: true,
@@ -41,22 +53,13 @@ function layoutHTML() {
 function sass() {
     // add tailwind using : https://gist.github.com/BaronVonPerko/27cd6d5b8c25f4ceb3b04313f56ca75e
     const tailwindcss = require('tailwindcss');
-    const purgecss = require("@fullhuman/postcss-purgecss");
 
     const plugins = [
         autoprefixer(),                                //  設定 autoprefixer
         tailwindcss('./tailwind.config.js'),    //  設定 tailwind
 
         // add purge-css using : https://gist.github.com/taylorbryant/91fc05b12472a88a8b6494f610647cd4
-        ...(options.env === "prod"
-            ? [
-                purgecss({
-                    content: ["./app/**/*.ejs", "./app/**/*.html"],
-                    defaultExtractor: content =>
-                        content.match(/[\w-/:]+(?<!:)/g) || []
-                })
-            ]
-            : [])
+
     ];
     return gulp.src(envOptions.style.src)
         .pipe($.sourcemaps.init())
@@ -125,7 +128,19 @@ function watch() {
     gulp.watch(envOptions.style.src, gulp.series(sass));
 }
 
+// 將沒用到的 css 做修剪
+function minifycss() {
+
+    // gulp-purgecss - https://www.npmjs.com/package/gulp-purgecss
+    return gulp.src(`${envOptions.style.path}/**/*.css`)
+        .pipe(purgecss({
+            content: [`${envOptions.html.path}/**/*.html`]
+        }))
+        .pipe(gulp.dest(envOptions.style.final))
+}
+
+gulp.task('purgecss', minifycss)
 gulp.task('deploy', deploy);
 gulp.task('clean', clean);
-gulp.task('build', gulp.series(clean, copyFile, layoutHTML, sass, babel, vendorsJs));
-gulp.task('default', gulp.series(clean, copyFile, layoutHTML, sass, babel, vendorsJs, gulp.parallel(browser, watch)));
+gulp.task('build', gulp.series(clean, copyFile, copyImages, layoutHTML, sass, babel, vendorsJs, minifycss));
+gulp.task('default', gulp.series(clean, copyFile, copyImages, layoutHTML, sass, babel, vendorsJs, minifycss, gulp.parallel(browser, watch)));

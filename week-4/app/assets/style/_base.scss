@@ -1,0 +1,15 @@
+:root {
+  --red: #650300;
+  --white: #fff;
+  --red-lighter: #AA0601;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Noto Sans', 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--red);
+}

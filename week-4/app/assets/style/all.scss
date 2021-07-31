@@ -1,63 +1,17 @@
-:root {
-  --red: #650300;
-  --white: #fff;
-  --red-lighter: #AA0601;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  font-family: 'Noto Sans', 'Roboto', sans-serif;
-}
-
-body {
-  margin: 0;
-  color: var(--red);
-}
-
-.text-white {
-  color: white;
-}
+@import "base";
+@import "utilities/spacing";
+@import "utilities/colors";
 
 .container {
-  width: 1210px;
+  max-width: 1210px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-.items-end {
-  align-items: flex-end;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.gap-20 {
-  gap: 20px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-bold {
-  font-weight: 900;
-}
-
-.text-blacklighter {
-  color: #707070;
-}
-
-.text-black {
-  color: #000000;
+  margin: 0 auto;  // 將內容元素左右置中
+  margin-bottom: 50px;
 }
 
 .header {
@@ -74,18 +28,6 @@ body {
 
   display: flex;
   gap: 80px;
-}
-
-.w-full {
-  width: 100%;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.border-t {
-  border-top: 1px solid white;
 }
 
 footer {
@@ -153,7 +95,7 @@ footer .tel-text {
   margin-bottom: 50px;
 }
 
-.block-1__title {
+h2 {
   margin: 50px;
   font-size: 48px;
   font-weight: 900;
@@ -181,6 +123,7 @@ footer .tel-text {
   flex-direction: column;
   gap: 10px;
   color: black;
+  margin: auto 0;
 }
 
 .contact-wrapper label {

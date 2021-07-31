@@ -6,7 +6,6 @@ const browserSync = require('browser-sync').create();
 const {envOptions} = require('./envOptions');
 const ghpages = require('./ghpages');
 const purgecss = require('gulp-purgecss');
-// const purgecss = require("@fullhuman/postcss-purgecss");
 
 let options = minimist(process.argv.slice(2), envOptions);
 
@@ -134,12 +133,14 @@ function minifycss() {
     // gulp-purgecss - https://www.npmjs.com/package/gulp-purgecss
     return gulp.src(`${envOptions.style.path}/**/*.css`)
         .pipe(purgecss({
-            content: [`${envOptions.html.path}/**/*.html`]
+            content: [`${envOptions.html.path}/**/*.html`],
+
+            // safelist 參考 : https://purgecss.com/safelisting.html#in-the-css-directly
+            safelist: ['green-check', 'check-wrap', 'checkmark']
         }))
         .pipe(gulp.dest(envOptions.style.final))
 }
 
-gulp.task('purgecss', minifycss)
 gulp.task('deploy', deploy);
 gulp.task('clean', clean);
 gulp.task('build', gulp.series(clean, copyFile, copyImages, layoutHTML, sass, babel, vendorsJs, minifycss));

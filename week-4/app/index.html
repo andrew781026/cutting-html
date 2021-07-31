@@ -5,16 +5,14 @@ engine: ejs
 current: index
 ---
 
-
 <div class="banner">
   <div class="container items-end">
     <span class="banner__title">Promise-Desert 2020 早春系列</span>
     <span class="banner__content text-bold">看得清，才能看得遠</span>
   </div>
 </div>
-<div class="block-1">
   <div class="container">
-    <span class="block-1__title">用專業的心，做專業的事</span>
+    <h2>用專業的心，做專業的事</h2>
     <div class="card-wrapper">
       <div class="features" v-for="feature in features" :key="feature.id">
         <img class="icon" :src="feature.icon" alt="icon">
@@ -23,10 +21,8 @@ current: index
       </div>
     </div>
   </div>
-</div>
-<div class="block-1">
   <div class="container gap-20">
-    <span class="block-1__title">經典系列鏡框</span>
+    <h2>經典系列鏡框</h2>
 
     <div class="classic-product" v-for="prod in classicProducts" :key="prod.id">
       <img :src="prod.img" alt="product">
@@ -36,10 +32,9 @@ current: index
       </div>
     </div>
   </div>
-</div>
-<div class="block-1 bg-woman">
+<div class="bg-woman">
   <div class="container">
-    <span class="block-1__title text-white">聯名設計鏡框</span>
+    <h2 class="text-white">聯名設計鏡框</h2>
 
     <div class="famous-wrapper">
       <div class="famous-product" v-for="prod in famousProducts" :key="prod.id">
@@ -49,9 +44,8 @@ current: index
     </div>
   </div>
 </div>
-<div class="block-1">
   <div class="container">
-    <span class="block-1__title">顧客推薦</span>
+    <h2>顧客推薦</h2>
 
     <div class="card-wrapper">
       <div class="customer" v-for="customer in customers" :key="customer.name">
@@ -64,10 +58,8 @@ current: index
       </div>
     </div>
   </div>
-</div>
-<div class="block-1">
   <div class="contact-wrapper">
-    <span class="block-1__title">聯絡我們</span>
+    <h2>聯絡我們</h2>
 
     <span>我們相當重視您的意見，若您有任何疑問，可先參考「常見問題」，若仍有任何問題，請填妥以下資料，我們會在近期與您聯繫。</span>
     <label for="name">姓名</label>
@@ -85,4 +77,3 @@ current: index
     <green-check text="我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料。"></green-check>
     <button>確認送出</button>
   </div>
-</div>

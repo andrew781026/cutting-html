@@ -51,11 +51,11 @@ function layoutHTML() {
 
 function sass() {
     // add tailwind using : https://gist.github.com/BaronVonPerko/27cd6d5b8c25f4ceb3b04313f56ca75e
-    const tailwindcss = require('tailwindcss');
+    // const tailwindcss = require('tailwindcss');
 
     const plugins = [
         autoprefixer(),                                //  設定 autoprefixer
-        tailwindcss('./tailwind.config.js'),    //  設定 tailwind
+        // tailwindcss('./tailwind.config.js'),    //  設定 tailwind
 
         // add purge-css using : https://gist.github.com/taylorbryant/91fc05b12472a88a8b6494f610647cd4
 
@@ -124,7 +124,7 @@ function watch() {
     gulp.watch(envOptions.html.ejsSrc, gulp.series(layoutHTML));
     gulp.watch(envOptions.javascript.src, gulp.series(babel));
     gulp.watch(envOptions.img.src, gulp.series(copyFile));
-    gulp.watch(envOptions.style.src, gulp.series(sass));
+    gulp.watch(envOptions.style.src, gulp.series(sass, minifycss));
 }
 
 // 將沒用到的 css 做修剪

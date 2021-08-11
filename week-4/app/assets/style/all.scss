@@ -389,12 +389,12 @@ h2 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0;
-  }
 
-  .header .header_menu span {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    border: 1px solid white;
+    span , a {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      border: 1px solid white;
+    }
   }
 }
 

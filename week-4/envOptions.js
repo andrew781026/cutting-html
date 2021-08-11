@@ -29,6 +29,7 @@ let envOptions = {
     html: {
         src: [
             `${srcPath}/**/*.html`,
+            `${srcPath}/**/*.ejs`,
         ],
         ejsSrc: [
             `${srcPath}/**/*.ejs`,

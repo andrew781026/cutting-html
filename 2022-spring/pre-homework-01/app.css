@@ -1,7 +1,6 @@
 .container {
     margin: auto;
-    min-height:100vh;
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 1200px;
 }
@@ -45,4 +44,49 @@
     margin-bottom: 12px;
     line-height: 36px;
     font-size: 24px;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.avatar {
+    height: 320px;
+    width: 320px;
+}
+
+.black-block {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #415165;
+    padding: 24px 102px 52px 102px;
+}
+
+
+.black-block .line {
+    border-color: #fff;
+    border-width: 1px;
+}
+
+.black-block .title {
+    font-size: 32px;
+    line-height: 45px;
+}
+
+.black-block .title.secondary {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.black-block .black-block__menu {
+    padding-left: 24px;
+    border-left: 1px solid #96A9C4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 24px;
+    line-height: 36px;
 }

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
 .container {
     margin: auto;
     display: flex;
@@ -5,15 +11,59 @@
     width: 1200px;
 }
 
+.title-wrap {
+    display: flex;
+    gap: 16px;
+}
+
+.x-y-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.primary-text {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 45px;
+}
+
+.secondary-text {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.desc-text {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.small-text {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.text-black {
+    color: #000000;
+}
+
+.text-red {
+    color: #A00404;
+}
+
 .line {
     width: 100%;
-    border: 2px solid #000000;
+    height: 2px;
+    background-color: #000;
     margin-top: 4px;
     margin-bottom: 4px;
 }
 
 .line.thin {
-    border-width: 1px;
+    height: 1px;
 }
 
 .h1 {
@@ -21,27 +71,12 @@
     line-height: 95px;
 }
 
-.info-block .title {
-    font-size: 32px;
-    line-height: 45px;
-    color: #000000;
-}
-
-.info-block .title.secondary {
-    font-size: 24px;
-    line-height: 29px;
-    color: #A00404;
-}
-
-.info-block .description {
-    font-size: 24px;
-    line-height: 36px;
-    color: #000000;
+.info-block {
+    margin-bottom: 72px;
 }
 
 .info-block__desc {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    padding: 12px 0;
     line-height: 36px;
     font-size: 24px;
 }
@@ -53,6 +88,7 @@
 .avatar {
     height: 320px;
     width: 320px;
+    margin: 48px 0;
 }
 
 .black-block {
@@ -65,10 +101,18 @@
     padding: 24px 102px 52px 102px;
 }
 
+.black-block:not(:last-of-type) {
+    margin-bottom: 72px;
+}
+
+.black-block.container {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 .black-block .line {
-    border-color: #fff;
-    border-width: 1px;
+    background-color: #fff;
+    height: 1px;
 }
 
 .black-block .title {
@@ -82,6 +126,37 @@
 }
 
 .black-block .black-block__menu {
+    padding-left: 24px;
+    border-left: 1px solid #96A9C4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.icon-wrap {
+    display: flex;
+    gap: 24px;
+}
+
+.logo {
+    height: 48px;
+    width: 48px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.font-700 {
+    font-weight: 700;
+}
+
+.menu {
+    margin-left: 24px;
+    margin-top: 16px;
     padding-left: 24px;
     border-left: 1px solid #96A9C4;
     display: flex;

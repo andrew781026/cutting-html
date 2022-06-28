@@ -79,6 +79,8 @@
     padding: 12px 0;
     line-height: 36px;
     font-size: 24px;
+    display: flex;
+    flex-direction: column;
 }
 
 .bg-black {
@@ -143,11 +145,6 @@
 .logo {
     height: 48px;
     width: 48px;
-}
-
-.flex-col {
-    display: flex;
-    flex-direction: column;
 }
 
 .font-700 {

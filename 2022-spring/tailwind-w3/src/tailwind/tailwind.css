@@ -1,0 +1,16 @@
+/* ./src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    /*擴充專案的全站樣式*/
+}
+
+@layer components {
+    /*自組元件*/
+}
+
+@layer utilities{
+    /*自組樣式*/
+}

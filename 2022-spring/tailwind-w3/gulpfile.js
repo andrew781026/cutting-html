@@ -179,4 +179,6 @@ gulp.task(makeFn("build-scss", "build scss & tailwind", {}, cssFn));
 const devFn = gulp.series(cleanDest, compileFn, gulp.parallel(watch, browser));
 gulp.task(makeFn("dev", "open the dev-server", {}, devFn));
 
+gulp.task(makeFn("build", "build html , css , js", {}, compileFn));
+
 gulp.task(makeFn("publish", "publish to github-pages", {}, publish));

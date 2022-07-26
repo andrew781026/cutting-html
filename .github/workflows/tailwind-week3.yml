@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: tailwind-week3 CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -21,8 +21,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-        with:
-          path: ./2022-spring/tailwind-w3
 
       # install node.js
       - uses: actions/setup-node@v1
@@ -31,11 +29,13 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: install dependencies
+        working-directory: ./2022-spring/tailwind-w3
         run: |
           npm i -g yarn
           yarn install
       # Runs a single command using the runners shell
       - name: try to build the project
+        working-directory: ./2022-spring/tailwind-w3
         run: yarn run build
 
       # use actions-gh-pages to deploy dist to gh-pages
@@ -43,5 +43,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./2022-spring/tailwind-w3/dist
           destination_dir: tailwind-week3

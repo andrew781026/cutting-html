@@ -37,7 +37,7 @@ const envs = {
     watch: {
         scss: './src/scss/**/*.scss',
         tailwind: './src/tailwind/**/*.css',
-        html: './src/html/**/*.{html,ejs}',
+        html: "./src/**/*.{html,ejs}",
         image: './src/images/**/*',
         vendorJs: './src/vendor/**/*',
         js: './src/js/**/*.js',
@@ -105,7 +105,6 @@ const minifyHTML = (cb, file) => {
         .on('end', () => cb())
 }
 
-
 function minifySCSS() {
 
     console.log('minifySCSS');
@@ -143,12 +142,12 @@ const compileFn = gulp.series(minifyHTML, minifySCSS, minifyImages, minifyTailwi
 const watch = () => {
 
     console.log('watch');
-    gulp.watch(envs.watch.tailwind, gulp.series(minifyTailwind, livereload));
-    gulp.watch(envs.watch.scss, gulp.series(minifySCSS, livereload));
-    gulp.watch(envs.watch.js, gulp.series(rollupJS, livereload));
-    gulp.watch(envs.watch.image, gulp.series(minifyImages, livereload));
-    gulp.watch(envs.watch.vendorJs, gulp.series(copyVendor, livereload));
-    gulp.watch(envs.watch.html, gulp.series(compileFn, livereload));
+    gulp.watch(envs.watch.tailwind, gulp.series(minifyTailwind));
+    gulp.watch(envs.watch.scss, gulp.series(minifySCSS));
+    gulp.watch(envs.watch.js, gulp.series(rollupJS));
+    gulp.watch(envs.watch.image, gulp.series(minifyImages));
+    gulp.watch(envs.watch.vendorJs, gulp.series(copyVendor));
+    gulp.watch(envs.watch.html, gulp.series(compileFn));
 }
 
 const livereload = () => {

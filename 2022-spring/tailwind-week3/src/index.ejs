@@ -1,14 +1,20 @@
 <!doctype html>
 <html lang="zh-TW">
 <head>
-    <title>Title</title>
+    <title><%- title %></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/tailwind.css" rel="stylesheet">
+    <!-- 載入 Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
-<h1 class="text-3xl font-bold underline text-red-600">
-    Hello world!
-</h1>
+<!-- header : 理論上要可以拆出單個檔案 , 但目前不清楚在 gulp-layout 底下要如何組合 ? 因此先塞到這 -->
+<header></header>
+<%- contents %>
+
+<!-- footer : 理論上要可以拆出單個檔案 , 但目前不清楚在 gulp-layout 底下要如何組合 ? 因此先塞到這 -->
+<footer></footer>
 </body>
 </html>

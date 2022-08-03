@@ -1,3 +1,4 @@
+const fs = require('fs');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
 const autoprefixer = require("autoprefixer");
@@ -13,6 +14,7 @@ const {publish} = require('./ghpages');
 // rollup , 參考資料 : https://www.kancloud.cn/yunye/rollup/327473
 //          參考資料 : https://rollupjs.org/guide/en/#creating-your-first-bundle
 const rollup = require('rollup');
+const StrFillTemplate = require("./StrFillTemplate");
 
 // compose 參考 : https://betterprogramming.pub/compose-and-pipe-in-javascript-medium-d1e1b2b21f83
 const compose = (...functions) => x => functions.reduceRight((acc, fn) => fn(acc), x);
@@ -66,6 +68,23 @@ const makeFn = (displayName, description, flags, fn) => {
 };
 
 const cleanDest = () => del([envs.browserDir]);
+
+const mergeIndexHtml = (cb) => {
+
+    console.log('mergeIndexHtml');
+    const indexEJS = fs.readFileSync('./src/layout/index.ejs').toString();
+    const headerEJS = fs.readFileSync('./src/layout/header.ejs').toString();
+    const footerEJS = fs.readFileSync('./src/layout/footer.ejs').toString();
+
+    const indexHtml = StrFillTemplate(indexEJS, {
+        header: headerEJS,
+        footer: footerEJS
+    });
+
+    fs.mkdirSync('./layout');
+    fs.writeFileSync('./layout/index.ejs',indexHtml,{flag:'w+',encoding:'utf8'});
+    cb();
+}
 
 const copyVendor = (cb, file) => {
 
@@ -137,7 +156,7 @@ function minifyImages() {
         .pipe(gulp.dest(envs.output.image));
 }
 
-const compileFn = gulp.series(minifyHTML, minifySCSS, minifyImages, minifyTailwind, rollupJS, copyVendor);
+const compileFn = gulp.series(mergeIndexHtml,minifyHTML, minifySCSS, minifyImages, minifyTailwind, rollupJS, copyVendor);
 
 const watch = () => {
 

@@ -6,5 +6,6 @@ node_modules
 # gen
 dist
 package-lock.json
+yarn.lock
 configs.js
 /2021-spring/week-4/configs.js

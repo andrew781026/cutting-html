@@ -1,4 +1,5 @@
 /* The container */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 label.check-wrap {
   display: inline;
   position: relative;
@@ -27,4 +28,9 @@ label.check-wrap div.check-box::after {
 label.check-wrap input[type=checkbox]:checked + div.check-box {
   border: 1px solid #f34f59;
   background-color: #f34f59;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", "Roboto", sans-serif;
 }

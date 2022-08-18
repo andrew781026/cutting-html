@@ -79,6 +79,7 @@
             color: #9999a6;
             cursor: pointer;
             background-color: transparent;
+            border-color: transparent;
             border-radius:4px;
         }
 
@@ -128,7 +129,13 @@
             background-color: transparent;
             display: flex;
             justify-content: center;
-            align-items: center;
+            color: #fff;
+            padding: 32px;
+        }
+
+        .second-card h6{
+            font-size: 24px;
+            line-height: 36px;
         }
 
         .second-card::before{
@@ -239,23 +246,24 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card first-card">
-                        <span class="material-icons md-48">
-                            rocket_launch
-                        </span>
-                    <h6 class="card-subtitle py-4">高效學習</h6>
-                    <span class="card-text">客製化專屬課表</span>
-                    <span class="card-text">讓學習變簡單</span>
+                <div class="card second-card" data-number="02" >
+                    <h6 class="card-subtitle py-4">付款</h6>
+                    <span class="card-text">支援各種支付方式</span>
+                    <span class="card-text">提供12期分期付款</span>
                 </div>
             </div>
             <div class="col">
-                <div class="card first-card" >
-                        <span class="material-icons md-48">
-                            place
-                        </span>
-                    <h6 class="card-subtitle py-4">指定地點</h6>
-                    <span class="card-text">專業老師到你指定的地點</span>
-                    <span class="card-text">一對一高效學習</span>
+                <div class="card second-card" data-number="03" >
+                    <h6 class="card-subtitle py-4">上課</h6>
+                    <span class="card-text">地點由您指定</span>
+                    <span class="card-text">密集性一對一教學</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card second-card" data-number="04" >
+                    <h6 class="card-subtitle py-4">提供滿意度</h6>
+                    <span class="card-text">提供課程滿意度及回饋</span>
+                    <span class="card-text">讓我們持續成長與進步</span>
                 </div>
             </div>
         </div>

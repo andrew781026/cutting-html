@@ -21,14 +21,15 @@
         }
 
         .colorful-line {
-            width: 100vw;
+            width: 100%;
             height: 2px;
             background-image:  linear-gradient(to left,#09ACF5 0%,#09ACF5 49.99%,#62DB54 50%, #62DB54 100%);
         }
 
         .bg-home{
             background-image: url('./imgs/bg_home.jpg');
-            background-size: cover;
+            background-size: contain;
+            background-position: center;
             min-height: 90vh;
         }
 
@@ -47,7 +48,7 @@
         .dot{
             width: 10px;
             height: 10px;
-            background-color:#fff ;
+            background-color:#fff;
             position: absolute;
         }
 
@@ -68,6 +69,55 @@
             right: -5px;
             bottom: -5px;
         }
+
+        .first-card{
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #9999a6;
+            cursor: pointer;
+            background-color: #202020;
+            border-radius:4px;
+        }
+
+        .first-card:hover{
+            border-color: greenyellow;
+            color: #fff;
+            transition: transform 0.2s;
+        }
+
+        .first-card:hover .material-icons {
+            background-image: linear-gradient(#09ACF5, #62DB54);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .first-card:active{
+           transform: translateY(-4px);
+        }
+
+        .green-line{
+            height: 3px;
+            width: 50px;
+            background-color: #62DB54;
+        }
+
+        .text-wrap{
+          font-size: 28px;
+          line-height: 1.5;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .material-icons.md-18 { font-size: 18px; }
+        .material-icons.md-24 { font-size: 24px; }
+        .material-icons.md-36 { font-size: 36px; }
+        .material-icons.md-48 { font-size: 48px; }
     </style>
 </head>
 <body>
@@ -89,15 +139,59 @@
     <!-- Navbar content -->
 </nav>
 <div class="colorful-line"></div>
-<div class="bg-home d-flex justify-content-center align-items-center vw-100"  >
+<div class="bg-home d-flex justify-content-center align-items-center">
     <div class="banner">
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
         <p class="colorful-text">全台最豐富的程式家教</p>
-        <p>在實踐中化理想為現實</p>
-        <p>全台最專業師資｜到府程式家教｜客製化課程</p>
+        <p class="text-white-50">在實踐中化理想為現實</p>
+        <p class="text-white-50">全台最專業師資｜到府程式家教｜客製化課程</p>
+    </div>
+</div>
+
+<div class="bg-dark w-100">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <div class="text-wrap">
+                    <p>手把手帶你</p>
+                    <p>親自到家教到會</p>
+                    <div class="green-line"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card first-card" >
+                        <span class="material-icons md-48">
+                            code
+                        </span>
+                        <h6 class="card-subtitle py-4">超過 100 種專業課程</h6>
+                        <span class="card-text">學習標準化的電腦形式語言</span>
+                        <span class="card-text">培養運算思維和邏輯素養</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card first-card" >
+                        <span class="material-icons md-48">
+                            rocket_launch
+                        </span>
+                        <h6 class="card-subtitle py-4">高效學習</h6>
+                        <span class="card-text">客製化專屬課表</span>
+                        <span class="card-text">讓學習變簡單</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card first-card" >
+                        <span class="material-icons md-48">
+                            place
+                        </span>
+                        <h6 class="card-subtitle py-4">指定地點</h6>
+                        <span class="card-text">專業老師到你指定的地點</span>
+                        <span class="card-text">一對一高效學習</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

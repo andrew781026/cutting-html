@@ -78,7 +78,7 @@
             align-items: center;
             color: #9999a6;
             cursor: pointer;
-            background-color: #202020;
+            background-color: transparent;
             border-radius:4px;
         }
 
@@ -112,6 +112,37 @@
             flex-direction: column;
             justify-content: center;
             height: 100%;
+        }
+
+        .bg-black{
+            background-color: #1C1C1C;
+        }
+
+        .text-white{
+           color: #fff;
+        }
+
+        .second-card{
+            position: relative;
+            border-color: #fff;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .second-card::before{
+            position: absolute;
+            left: 24px;
+            top: 0;
+            content: attr(data-number);
+            font-size: 48px;
+            line-height: 56px;
+            color: #62DB54;
+            background-color: #1C1C1C;
+            padding: 0 8px;
+            font-weight: 700;
+            transform: translateY(-50%);
         }
 
         .material-icons.md-18 { font-size: 18px; }
@@ -189,6 +220,42 @@
                         <h6 class="card-subtitle py-4">指定地點</h6>
                         <span class="card-text">專業老師到你指定的地點</span>
                         <span class="card-text">一對一高效學習</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-black w-100 d-flex flex-column align-items-center p-4">
+    <h2 class="text-white">預期上課流程</h2>
+    <div class="green-line"></div>
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <div class="card second-card" data-number="01" >
+                    <h6 class="card-subtitle py-4">預約</h6>
+                    <span class="card-text">線上預約指定課程與老師</span>
+                    <span class="card-text">由老師安排專屬課程</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card first-card">
+                        <span class="material-icons md-48">
+                            rocket_launch
+                        </span>
+                    <h6 class="card-subtitle py-4">高效學習</h6>
+                    <span class="card-text">客製化專屬課表</span>
+                    <span class="card-text">讓學習變簡單</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card first-card" >
+                        <span class="material-icons md-48">
+                            place
+                        </span>
+                    <h6 class="card-subtitle py-4">指定地點</h6>
+                    <span class="card-text">專業老師到你指定的地點</span>
+                    <span class="card-text">一對一高效學習</span>
                 </div>
             </div>
         </div>

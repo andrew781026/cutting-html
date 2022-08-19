@@ -63,29 +63,29 @@ const watch = () => {
 
     console.log('watch');
 
-    const wrapWatcher = (watcher,actionFn) => {
+    const wrapWatcher = (watcher, actionFn) => {
 
         // file change
         watcher.on('change', (path, stat) => {
             console.log(`${actionFn.name} file - ${path} changed`);
-            actionFn(null, {path, stat,type:'change'});
+            actionFn(null, {path, stat, type: 'change'});
         })
 
         // add file
         watcher.on('add', (path, stat) => {
             console.log(`${actionFn.name} file - ${path} added`);
-            actionFn(null, {path, stat,type:'add'});
-        }  )
+            actionFn(null, {path, stat, type: 'add'});
+        })
 
         // delete file
         watcher.on('unlink', (path, stat) => {
             console.log(`${actionFn.name} file - ${path} delete`);
-            actionFn(null, {path, stat,type:'delete'});
+            actionFn(null, {path, stat, type: 'delete'});
         })
     }
 
-    wrapWatcher( gulp.watch(envs.watch.scss) , minifySCSS );
-    wrapWatcher( gulp.watch(envs.watch.html) , mergeHTML );
+    wrapWatcher(gulp.watch(envs.watch.scss), minifySCSS);
+    wrapWatcher(gulp.watch(envs.watch.html), mergeHTML);
 }
 
 function minifySCSS() {
@@ -121,9 +121,9 @@ const mergeHTML = (cb, file) => {
         fs.mkdirSync(outputFolder, {recursive: true});
     }
 
-    if ( file && file.type === 'delete' ){
+    if (file && file.type === 'delete') {
         const fileName = path.basename(file.path);
-      return fs.unlinkSync(path.resolve(outputFolder,fileName));
+        return fs.unlinkSync(path.resolve(outputFolder, fileName));
     }
 
     /**
@@ -151,15 +151,6 @@ const mergeHTML = (cb, file) => {
 
         }, {})
     }
-
-    /*
-     * content = {
-     *   attributes: { title: "Just hack'n", description: 'Nothing to see here' },
-     *   body: 'This is some text about some stuff that happened sometime ago\n',
-     *   bodyBegin: 6,
-     *   frontmatter: "title: Just hack'n\ndescription: Nothing to see here"
-     * }
-     */
 
     /**
      * 將 html

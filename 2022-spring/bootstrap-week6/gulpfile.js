@@ -172,7 +172,11 @@ function minifyImages() {
     console.log('minifyImages');
     return gulp
         .src(envs.input.image)
-        .pipe(gulpSquoosh())
+        .pipe(gulpSquoosh({
+            encodeOptions: {
+                oxipng: {},
+            },
+        }))
         .pipe(gulp.dest(envs.output.image));
 }
 

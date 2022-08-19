@@ -4,12 +4,23 @@
   "description": "the online course of template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp"
   },
   "keywords": [],
   "author": "andrew",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^5.2.0"
+    "bootstrap": "^5.2.0",
+    "browser-sync": "^2.27.10",
+    "del": "6.0.0",
+    "front-matter": "^4.0.2",
+    "glob": "^8.0.3",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-squoosh": "^0.9.0",
+    "sass": "^1.54.4"
+  },
+  "devDependencies": {
+    "gulp-plumber": "^1.2.1"
   }
 }

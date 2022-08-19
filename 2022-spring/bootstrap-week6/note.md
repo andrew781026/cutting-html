@@ -38,6 +38,14 @@
 
 - npm install : `npm i -s bootstrap`
 
+## npm run 時，追加參數
+
+- https://stackoverflow.com/questions/11580961/sending-command-line-arguments-to-npm-script
+
+```html
+~$ npm run gulp -- --tasks
+```
+
 ### 作業相關資訊
 
 * <a href="https://rpg.hexschool.com/training/30/task?type=detail&id=304" target="_top">第六週 - 程式家教</a>、<a href="https://xd.adobe.com/view/ec5c5da0-6d93-4e78-bd3b-c8e9584fde44-b90f/screen/8abe4f5e-6bcf-4391-b323-d4fb37b1509a/" target="_top">設計稿</a>、[圖片下載](https://github.com/hexschool/2022-web-layout-training)

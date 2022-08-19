@@ -1,0 +1,143 @@
+.colorful-text {
+    font-size: 72px;
+    background-image: linear-gradient(#09ACF5, #62DB54);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.colorful-line {
+    width: 100%;
+    height: 2px;
+    background-image:  linear-gradient(to left,#09ACF5 0%,#09ACF5 49.99%,#62DB54 50%, #62DB54 100%);
+}
+
+.bg-home{
+    background-image: url('../imgs/bg_home.jpg');
+    background-size: contain;
+    background-position: center;
+    min-height: 90vh;
+}
+
+.banner{
+    position: relative;
+    width: 80vw;
+    height: 300px;
+    border:1px solid #ffffff;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot{
+    width: 10px;
+    height: 10px;
+    background-color:#fff;
+    position: absolute;
+}
+
+.dot:nth-of-type(1){
+    left: -5px;
+    top: -5px;
+}
+.dot:nth-of-type(2){
+    right:-5px;
+    top:-5px;
+}
+.dot:nth-of-type(3){
+    left: -5px;
+    bottom: -5px;
+}
+
+.dot:nth-of-type(4){
+    right: -5px;
+    bottom: -5px;
+}
+
+.first-card{
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #9999a6;
+    cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius:4px;
+}
+
+.first-card:hover{
+    border-color: greenyellow;
+    color: #fff;
+    transition: transform 0.2s;
+}
+
+.first-card:hover .material-icons {
+    background-image: linear-gradient(#09ACF5, #62DB54);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.first-card:active{
+    transform: translateY(-4px);
+}
+
+.green-line{
+    height: 3px;
+    width: 50px;
+    background-color: #62DB54;
+}
+
+.text-wrap{
+    font-size: 28px;
+    line-height: 1.5;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.bg-black{
+    background-color: #1C1C1C;
+}
+
+.text-white{
+    color: #fff;
+}
+
+.second-card{
+    position: relative;
+    border-color: #fff;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 32px;
+}
+
+.second-card h6{
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.second-card::before{
+    position: absolute;
+    left: 24px;
+    top: 0;
+    content: attr(data-number);
+    font-size: 48px;
+    line-height: 56px;
+    color: #62DB54;
+    background-color: #1C1C1C;
+    padding: 0 8px;
+    font-weight: 700;
+    transform: translateY(-50%);
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

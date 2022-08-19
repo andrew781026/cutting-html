@@ -31,7 +31,7 @@ const envs = {
     },
     watch: {
         scss: './src/scss/**/*.scss',
-        html: "./src/**/*.{html,ejs}",
+        html: "./src/**/*.html",
         image: './src/imgs/**/*',
     },
 }
@@ -62,8 +62,14 @@ const cleanDest = () => del([envs.browserDir]);
 const watch = () => {
 
     console.log('watch');
-    gulp.watch(envs.watch.scss,(path, stat) => minifySCSS(null, {path,stat}));
-
+    gulp.watch(envs.watch.scss, (path, stat) => {
+        console.log('scss changed');
+        minifySCSS(null, {path, stat});
+    });
+    gulp.watch(envs.watch.html, (path, stat) => {
+        console.log('html changed');
+        mergeHTML(null, {path, stat});
+    });
 }
 
 function minifySCSS() {
@@ -71,7 +77,7 @@ function minifySCSS() {
     console.log('minifySCSS');
     return gulp.src(envs.input.scss)
         .pipe(plumber({
-            errorHandler : err => console.error(err)
+            errorHandler: err => console.error(err)
         }))
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(envs.output.css));
@@ -81,6 +87,7 @@ function browser() {
     browserSync.init({
         server: {
             baseDir: envs.browserDir,
+            index: "home.html"
         },
         port: 3018,
         open: true,  // open the browser automatically
@@ -94,66 +101,69 @@ const mergeHTML = (cb, file) => {
     const outputFolder = envs.output.html;
 
     // if dist folder not exist , create it
-    if (!fs.existsSync(outputFolder)){
-        fs.mkdirSync(outputFolder, { recursive: true });
+    if (!fs.existsSync(outputFolder)) {
+        fs.mkdirSync(outputFolder, {recursive: true});
+    }
+
+    /**
+     * 將 layout 中對應的檔案內容給取出
+     * @param {object} attributes  { title: "Just hack'n", description: 'Nothing to see here' }
+     * @param {array} attributes.layout  [ { header: 'layout/index.ejs' }, { footer: 'layout/footer.ejs' } ]
+     * @returns {{}|*}
+     */
+    const parseLayoutInfo = (attributes) => {
+
+        const layoutArr = attributes.layout;
+
+        if (!Array.isArray(layoutArr)) return {};
+        else return layoutArr.reduce((pre, curr) => {
+
+            const key = Object.keys(curr)[0];
+            const filePath = path.resolve(curr[key]);
+            const fileData = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8').toString() : '';
+            const value = strFillTemplate(fileData, attributes);
+
+            return {
+                ...pre,
+                [key]: value
+            }
+
+        }, {})
     }
 
     /*
-     * content.layout= [
-     *     { header: 'layout/index.ejs' },
-     *     { footer: 'layout/footer.ejs' },
-     *   ]
+     * content = {
+     *   attributes: { title: "Just hack'n", description: 'Nothing to see here' },
+     *   body: 'This is some text about some stuff that happened sometime ago\n',
+     *   bodyBegin: 6,
+     *   frontmatter: "title: Just hack'n\ndescription: Nothing to see here"
+     * }
      */
-    const parseLayoutInfo = layoutArr => {
-
-        if (!Array.isArray(layoutArr)) return {};
-        else return layoutArr.reduce( (pre,curr) => {
-
-           const key = Object.keys(curr)[0];
-           const filePath = path.resolve(curr[key]);
-           const value = fs.existsSync(filePath)? fs.readFileSync(filePath,'utf-8').toString():'';
-
-           return {
-               ...pre,
-               [key]:value
-           }
-
-        } , {})
-    }
-
-     /*
-      * content = {
-      *   attributes: { title: "Just hack'n", description: 'Nothing to see here' },
-      *   body: 'This is some text about some stuff that happened sometime ago\n',
-      *   bodyBegin: 6,
-      *   frontmatter: "title: Just hack'n\ndescription: Nothing to see here"
-      * }
-      */
     const mergeSingleHtml = filePath => {
 
-        const fileData = fs.readFileSync(filePath,'utf-8').toString();
+        const fileData = fs.readFileSync(filePath, 'utf-8').toString();
         const frontMatterResult = frontMatter(fileData);
 
         const newAttributes = {
             ...frontMatterResult.attributes,
-            ...parseLayoutInfo(frontMatterResult.attributes.layout),
+            ...parseLayoutInfo(frontMatterResult.attributes),
         }
 
-        return strFillTemplate(frontMatterResult.body,newAttributes);
+        return strFillTemplate(frontMatterResult.body, newAttributes);
     }
 
     const compileSingleHtml = filePath => {
 
-        const fileName   = path.basename(filePath);
+        const fileName = path.basename(filePath);
 
         // 底線開頭的檔案，就跳過不編譯
-        if ( fileName.startsWith('_') ) return ;
+        if (fileName.startsWith('_')) return;
         const singleHtml = mergeSingleHtml(filePath);
-        const outputPath = path.resolve(outputFolder,fileName);
-        fs.writeFileSync(outputPath,singleHtml,'utf-8');
+        const outputPath = path.resolve(outputFolder, fileName);
+        fs.writeFileSync(outputPath, singleHtml, 'utf-8');
     }
 
-    if (file){
+    if (file) {
 
         const filePath = path.resolve(file.path);
         compileSingleHtml(filePath);
@@ -161,9 +171,9 @@ const mergeHTML = (cb, file) => {
     } else {
 
         const files = glob.sync(envs.input.html);
-        files.forEach( filePath => compileSingleHtml(filePath) );
+        files.forEach(filePath => compileSingleHtml(filePath));
 
-        if(cb) cb();
+        if (cb) cb();
     }
 }
 
@@ -174,7 +184,7 @@ function minifyImages() {
         .src(envs.input.image)
         .pipe(gulpSquoosh({
             encodeOptions: {
-                oxipng: {},
+                oxipng: {}, // only output png file
             },
         }))
         .pipe(gulp.dest(envs.output.image));
@@ -193,7 +203,7 @@ function copyImages() {
 
 gulp.task(makeFn("cleanDest", "clean the dist folder", {}, cleanDest));
 
-const compileFn = gulp.series(mergeHTML, minifySCSS,copyImages);
+const compileFn = gulp.series(mergeHTML, minifySCSS, copyImages);
 const devFn = gulp.series(cleanDest, compileFn, gulp.parallel(watch, browser));
 gulp.task(makeFn("dev", "open the dev-server", {}, devFn));
 gulp.task(makeFn("compile-html", "compile-html", {}, mergeHTML));

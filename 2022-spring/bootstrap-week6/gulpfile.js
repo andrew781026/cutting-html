@@ -181,8 +181,7 @@ const mergeHTML = (cb, file) => {
     fs.writeFileSync(outputPath, singleHtml, 'utf-8');
   };
 
-  const layoutName = file ? path.basename(file.path) : '';
-  const isLayout = layoutName.startsWith('_');
+  const isLayout = file ? path.basename(file.path).startsWith('_') : false;
 
   if (file && isLayout) {
 
@@ -190,18 +189,18 @@ const mergeHTML = (cb, file) => {
       const fileName = path.basename(filePath);
       const isLayout = fileName.startsWith('_');
       return !isLayout;
-    }
+    };
 
     const containTarget = layoutName => filePath => {
       const fileData = fs.readFileSync(filePath, 'utf-8').toString();
       return new RegExp(layoutName, 'g').test(fileData);
-    }
+    };
 
     // 找出哪些檔案有引用此檔案，並重新編譯那些檔案
     const files = glob.sync(envs.input.html);
     files
       .filter(notLayout)
-      .filter(containTarget(layoutName))
+      .filter(containTarget(path.basename(file.path)))
       .forEach(filePath => compileSingleHtml(filePath));
 
   } else if (file && !isLayout) {

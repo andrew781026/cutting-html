@@ -62,14 +62,30 @@ const cleanDest = () => del([envs.browserDir]);
 const watch = () => {
 
     console.log('watch');
-    gulp.watch(envs.watch.scss, (path, stat) => {
-        console.log('scss changed');
-        minifySCSS(null, {path, stat});
-    });
-    gulp.watch(envs.watch.html, (path, stat) => {
-        console.log('html changed');
-        mergeHTML(null, {path, stat});
-    });
+
+    const wrapWatcher = (watcher,actionFn) => {
+
+        // file change
+        watcher.on('change', (path, stat) => {
+            console.log(`${actionFn.name} file - ${path} changed`);
+            actionFn(null, {path, stat,type:'change'});
+        })
+
+        // add file
+        watcher.on('add', (path, stat) => {
+            console.log(`${actionFn.name} file - ${path} added`);
+            actionFn(null, {path, stat,type:'add'});
+        }  )
+
+        // delete file
+        watcher.on('unlink', (path, stat) => {
+            console.log(`${actionFn.name} file - ${path} delete`);
+            actionFn(null, {path, stat,type:'delete'});
+        })
+    }
+
+    wrapWatcher( gulp.watch(envs.watch.scss) , minifySCSS );
+    wrapWatcher( gulp.watch(envs.watch.html) , mergeHTML );
 }
 
 function minifySCSS() {
@@ -105,8 +121,13 @@ const mergeHTML = (cb, file) => {
         fs.mkdirSync(outputFolder, {recursive: true});
     }
 
+    if ( file && file.type === 'delete' ){
+        const fileName = path.basename(file.path);
+      return fs.unlinkSync(path.resolve(outputFolder,fileName));
+    }
+
     /**
-     * 將 layout 中對應的檔案內容給取出
+     * 將 layout 中對應的檔案內容給取出，對應的參數由 frontMatter 傳入
      * @param {object} attributes  { title: "Just hack'n", description: 'Nothing to see here' }
      * @param {array} attributes.layout  [ { header: 'layout/index.ejs' }, { footer: 'layout/footer.ejs' } ]
      * @returns {{}|*}
@@ -138,6 +159,12 @@ const mergeHTML = (cb, file) => {
      *   bodyBegin: 6,
      *   frontmatter: "title: Just hack'n\ndescription: Nothing to see here"
      * }
+     */
+
+    /**
+     * 將 html
+     * @param filePath
+     * @returns {any}
      */
     const mergeSingleHtml = filePath => {
 

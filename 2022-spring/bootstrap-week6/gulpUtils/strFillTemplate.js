@@ -5,6 +5,7 @@
  * @constructor
  * @param {string} templateString - template literals .
  * @param {object} [templateVars={}] - 參數名稱 .
+ * @return {string} 帶入參數後的字串
  */
 const StrFillTemplate = (templateString, templateVars = {}) => {
 

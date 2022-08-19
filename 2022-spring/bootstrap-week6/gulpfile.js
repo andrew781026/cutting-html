@@ -180,12 +180,20 @@ function minifyImages() {
         .pipe(gulp.dest(envs.output.image));
 }
 
+function copyImages() {
+
+    console.log('copyImages');
+    return gulp
+        .src(envs.input.image)
+        .pipe(gulp.dest(envs.output.image));
+}
+
 // how to write gulp plugin
 // link - https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md
 
 gulp.task(makeFn("cleanDest", "clean the dist folder", {}, cleanDest));
 
-const compileFn = gulp.series(mergeHTML, minifySCSS,minifyImages);
+const compileFn = gulp.series(mergeHTML, minifySCSS,copyImages);
 const devFn = gulp.series(cleanDest, compileFn, gulp.parallel(watch, browser));
 gulp.task(makeFn("dev", "open the dev-server", {}, devFn));
 gulp.task(makeFn("compile-html", "compile-html", {}, mergeHTML));

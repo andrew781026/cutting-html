@@ -10,6 +10,10 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+body {
+  font-family: 'Azeret Mono', 'Noto Sans TC', monospace, sans-serif;
+}
+
 // Then add additional custom code here
 @import "_home.scss";
 @import "_footer.scss";

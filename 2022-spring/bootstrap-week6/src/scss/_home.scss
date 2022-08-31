@@ -1,3 +1,4 @@
+
 body {
   color: #fff;
   overflow-x: hidden;
@@ -41,6 +42,11 @@ nav.navbar {
   min-height: 90vh;
 }
 
+.bg-share {
+  background-image: url('../imgs/bg_share.jpg');
+  background-size: cover;
+}
+
 .banner {
   position: relative;
   width: 80vw;
@@ -52,6 +58,33 @@ nav.navbar {
   justify-content: center;
   align-items: center;
   padding: 32px 24px;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    position: absolute;
+
+    &:nth-of-type(1) {
+      left: -5px;
+      top: -5px;
+    }
+
+    &:nth-of-type(2) {
+      right: -5px;
+      top: -5px;
+    }
+
+    &:nth-of-type(3) {
+      left: -5px;
+      bottom: -5px;
+    }
+
+    &:nth-of-type(4) {
+      right: -5px;
+      bottom: -5px;
+    }
+  }
 
   h2 {
     font-weight: bold;
@@ -68,33 +101,6 @@ nav.navbar {
     @media (max-width: 576px) {
       font-size: 24px;
     }
-  }
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  position: absolute;
-
-  &:nth-of-type(1) {
-    left: -5px;
-    top: -5px;
-  }
-
-  &:nth-of-type(2) {
-    right: -5px;
-    top: -5px;
-  }
-
-  &:nth-of-type(3) {
-    left: -5px;
-    bottom: -5px;
-  }
-
-  &:nth-of-type(4) {
-    right: -5px;
-    bottom: -5px;
   }
 }
 
@@ -334,6 +340,182 @@ nav.navbar {
   }
 }
 
+.article-card {
+  padding: 32px;
+  border-radius: 16px;
+  background-color: #1C1C1C;
+  cursor: pointer;
+  position: relative;
+
+  .corner {
+    display: none;
+    border-style: solid;
+    border-color: #62DB54;
+    border-width: 0;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+
+    &:nth-of-type(1) {
+      border-top-left-radius: 50%;
+      border-top-width: 1px;
+      border-left-width: 1px;
+      top: 0;
+      left: 0;
+    }
+
+    &:nth-of-type(2) {
+      border-top-right-radius: 50%;
+      border-top-width: 1px;
+      border-right-width: 1px;
+      top: 0;
+      right: 0;
+    }
+
+    &:nth-of-type(3) {
+      border-bottom-left-radius: 50%;
+      border-bottom-width: 1px;
+      border-left-width: 1px;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:nth-of-type(4) {
+      border-bottom-right-radius: 50%;
+      border-bottom-width: 1px;
+      border-right-width: 1px;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  &:hover {
+    .corner {
+      display: inline;
+    }
+  }
+
+  img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .title {
+    z-index: 2;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 16px 0;
+  }
+
+  .desc {
+    font-size: 16px;
+    padding: 16px 0;
+    font-weight: 200;
+  }
+
+  .more {
+    text-align: right;
+    color: #62DB54;
+    font-size: 18px;
+  }
+}
+
+.join-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 48px;
+  border-radius: 24px;
+  background-color: #202020;
+  gap: 48px;
+  margin: auto;
+
+  @media (max-width: 767px) {
+    margin: 12px;
+    flex-direction: column;
+
+    .desc {
+      text-align: center;
+    }
+  }
+
+  .material-icons {
+    color: #909090;
+  }
+
+  .desc {
+
+    h6 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    span {
+      font-size: 18px;
+    }
+  }
+}
+
+.share-wrap {
+  display: flex;
+
+  .share {
+    flex: 2;
+    position: relative;
+    border-radius: 24px;
+
+    img {
+      width: 100%;
+      border-radius: 24px;
+    }
+
+    .bg-line {
+      border-radius: 24px;
+      position: absolute;
+      top: 8px;
+      left: -8px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #7C7E77;
+    }
+  }
+
+  .comment {
+    flex: 1;
+    position: relative;
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 32px;
+    border-bottom-left-radius: 0;
+    left: -24px;
+    top: 48px;
+    margin-top: auto;
+    color: #494755;
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .desc {
+      font-size: 16px;
+    }
+
+    .avatar {
+      position: absolute;
+      top: -50px;
+      right: 32px;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+}
+
 .green-line {
   height: 3px;
   width: 50px;
@@ -355,30 +537,18 @@ nav.navbar {
   background-color: #1C1C1C;
 }
 
-.text-white {
-  color: #fff;
-}
-
 .material-icons {
-
-  &.md-18 {
-    font-size: 18px;
-  }
-
-  &.md-24 {
-    font-size: 24px;
-  }
 
   &.md-30 {
     font-size: 30px;
   }
 
-  &.md-36 {
-    font-size: 36px;
-  }
-
   &.md-48 {
     font-size: 48px;
+  }
+
+  &.md-80 {
+    font-size: 80px;
   }
 }
 

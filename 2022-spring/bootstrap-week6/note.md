@@ -59,3 +59,7 @@
 - https://mymth.github.io/vanillajs-datepicker/#/
 #### swiper 輪播
 - https://www.swiper.com.cn/
+
+## 其他
+
+- [vue ssr](https://vuejs.org/guide/scaling-up/ssr.html#rendering-an-app)

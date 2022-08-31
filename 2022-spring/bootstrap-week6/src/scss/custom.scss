@@ -2,6 +2,9 @@
 
 // Custom.scss
 // Option A: Include all of Bootstrap
+// override Bootstrap's variables before importing it
+// $primary: teal;
+// $secondary:green;
 
 // Include any default variable overrides here (though functions won't be available)
 
@@ -9,3 +12,5 @@
 
 // Then add additional custom code here
 @import "_home.scss";
+@import "_footer.scss";
+

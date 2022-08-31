@@ -1,0 +1,37 @@
+body {
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.bg-black-900 {
+  background-color: #000000;
+}
+
+.bg-black-700 {
+  background-color: #1C1C1C;
+}
+
+.bg-black-500 {
+  background-color: #2d2d2d;
+}
+
+.material-icons {
+
+  &.md-30 {
+    font-size: 30px;
+  }
+
+  &.md-48 {
+    font-size: 48px;
+  }
+
+  &.md-80 {
+    font-size: 80px;
+  }
+}
+
+.py-80px {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}

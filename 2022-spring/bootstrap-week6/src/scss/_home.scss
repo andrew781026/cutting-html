@@ -34,7 +34,6 @@ nav.navbar {
   color: #fff;
 }
 
-
 .bg-home {
   background-image: url('../imgs/bg_home.jpg');
   background-size: contain;
@@ -267,6 +266,74 @@ nav.navbar {
   }
 }
 
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 48px;
+  cursor: pointer;
+  background-size: cover;
+  min-width: 300px;
+
+  @media (min-width: 576px) {
+    min-height: 600px;
+  }
+
+  @media (max-width: 576px) {
+    align-items: center;
+
+    .icon {
+      z-index: 2;
+      color: #62DB54;
+    }
+  }
+
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(28, 28, 28, 0.6);
+  }
+
+  .info-line {
+    z-index: 2;
+    width: 50px;
+    height: 3px;
+    transition: all 0.3s;
+    background-color: #fff;
+    margin-bottom: 32px;
+  }
+
+  h6 {
+    z-index: 2;
+    font-weight: bold;
+    font-size: 24px;
+    color: #fff;
+  }
+
+  .desc {
+    font-size: 18px;
+  }
+
+  &:hover {
+    .icon {
+      color: #62DB54;
+    }
+
+    .info-line {
+      width: 70px;
+      background-color: #62DB54;
+    }
+
+    .mask {
+      display: none;
+    }
+  }
+}
+
 .green-line {
   height: 3px;
   width: 50px;
@@ -300,6 +367,10 @@ nav.navbar {
 
   &.md-24 {
     font-size: 24px;
+  }
+
+  &.md-30 {
+    font-size: 30px;
   }
 
   &.md-36 {

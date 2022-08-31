@@ -28,14 +28,14 @@ ${header}
 <div class="w-100 bg-black-500">
     <div class="container">
         <!-- https://getbootstrap.com/docs/5.0/utilities/display/ -->
-        <!-- .d-flex .d-lg-none = 在 md 以下顯示 -->
+        <!-- .d-flex .d-md-none = 在 xs 以下顯示 -->
         <div class="d-flex d-md-none row flex-column align-items-center pb-4">
             <h2 class="text-white text-center mb-4">手把手帶你</h2>
             <h2 class="text-white text-center mb-4">親自到家教到會</h2>
             <div class="green-line mb-4"></div>
         </div>
         <div class="row g-4 mx-0">
-            <!-- .d-none .d-lg-flex = 在 lg 以上顯示 -->
+            <!-- .d-none .d-md-flex = 在 md 以上顯示 -->
             <div class="col d-none d-md-flex">
                 <div class="text-wrap">
                     <p>手把手帶你</p>
@@ -45,9 +45,9 @@ ${header}
             </div>
             <div class="col" v-for="feature in features" :key="feature.title">
                 <div class="card feature-card">
-                        <span class="material-icons md-48">
-                            {{feature.icon}}
-                        </span>
+                    <span class="material-icons md-48">
+                        {{feature.icon}}
+                    </span>
                     <h6 class="card-subtitle py-4">{{feature.title}}</h6>
                     <span class="card-text">{{feature.desc_1}}</span>
                     <span class="card-text">{{feature.desc_2}}</span>
@@ -117,7 +117,22 @@ ${header}
         </div>
     </div>
 </div>
-<div class="w-100 bg-black-700"></div>
+<div class="w-100 bg-black-700">
+    <div class="row g-0">
+        <div class="col" v-for="info in infos" :key="info.title">
+            <div class="info-card" :style="{ backgroundImage: info.bg }">
+                <div class="mask"></div>
+                <span class="material-icons icon md-30">
+                    {{info.icon}}
+                </span>
+                <h6 class="card-subtitle py-4">{{info.title}}</h6>
+                <div class="info-line"></div>
+                <span class="card-text">{{info.desc_1}}</span>
+                <span class="card-text">{{info.desc_2}}</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="w-100 bg-black-700"></div>
 <div class="w-100 bg-black-700"></div>
 <div class="w-100 bg-black-900"></div>
@@ -245,6 +260,37 @@ ${footer}
                         price: 'NT$1100',
                         minute: '50分鐘',
                     },
+                ],
+                infos: [
+                    {
+                        icon: 'forum',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info01.jpg")',
+                        title: '對症下藥，專案製作',
+                        desc_1: '除了可以瘋狂提問之外',
+                        desc_2: '還有機會一起完成專案',
+                    },
+                    {
+                        icon: 'tips_and_updates',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info02.jpg")',
+                        title: '激發你的學習潛力',
+                        desc_1: '進度制課程安排&個人化學習建議',
+                        desc_2: '有效管理你的學習動力',
+                    },
+                    {
+                        icon: 'thumb_up',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info03.jpg")',
+                        title: '學習效率',
+                        desc_1: '針對學員狀況調整內容與步調',
+                        desc_2: '學習精準最有效',
+                    },
+                    {
+                        icon: 'supervisor_account',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info04.jpg")',
+                        title: '一對一指導',
+                        desc_1: '針對目的進行客製化課程安排',
+                        desc_2: '快速的學以致用',
+                    },
+
                 ],
             }
         },

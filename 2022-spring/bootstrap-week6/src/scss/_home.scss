@@ -459,7 +459,6 @@ nav.navbar {
 }
 
 .share-wrap {
-  display: flex;
 
   .share {
     flex: 2;
@@ -495,6 +494,10 @@ nav.navbar {
     top: 48px;
     margin-top: auto;
     color: #494755;
+
+    @media (max-width: 767px) {
+      left: 0;
+    }
 
     .title {
       font-size: 18px;

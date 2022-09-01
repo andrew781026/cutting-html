@@ -245,6 +245,7 @@ gulp.task(makeFn('cleanDest', 'clean the dist folder', {}, cleanDest));
 
 const compileFn = gulp.series(mergeHTML, minifySCSS, copyImages);
 const devFn = gulp.series(cleanDest, compileFn, gulp.parallel(watch, browser));
+const buildFn = gulp.series(cleanDest, compileFn);
 gulp.task(makeFn('dev', 'open the dev-server', {}, devFn));
 gulp.task(makeFn('compile-html', 'compile-html', {}, mergeHTML));
-gulp.task(makeFn('build', 'build output html & css', {}, gulp.series(cleanDest, compileFn)));
+gulp.task(makeFn('build', 'build output html & css', {}, buildFn));

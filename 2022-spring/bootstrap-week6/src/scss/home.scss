@@ -36,33 +36,6 @@
   align-items: center;
   padding: 32px 24px;
 
-  .dot {
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    position: absolute;
-
-    &:nth-of-type(1) {
-      left: -5px;
-      top: -5px;
-    }
-
-    &:nth-of-type(2) {
-      right: -5px;
-      top: -5px;
-    }
-
-    &:nth-of-type(3) {
-      left: -5px;
-      bottom: -5px;
-    }
-
-    &:nth-of-type(4) {
-      right: -5px;
-      bottom: -5px;
-    }
-  }
-
   h2 {
     font-weight: bold;
     font-size: 72px;
@@ -496,12 +469,6 @@
       object-fit: cover;
     }
   }
-}
-
-.green-line {
-  height: 3px;
-  width: 50px;
-  background-color: #62DB54;
 }
 
 .text-wrap {

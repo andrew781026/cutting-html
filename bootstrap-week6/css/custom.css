@@ -10805,6 +10805,9 @@ body {
   background-color: #2d2d2d;
 }
 
+.material-icons.md-8 {
+  font-size: 8px;
+}
 .material-icons.md-30 {
   font-size: 30px;
 }
@@ -10815,7 +10818,36 @@ body {
   font-size: 80px;
 }
 
+.green-line {
+  height: 3px;
+  width: 50px;
+  background-color: #62DB54;
+}
+
 .py-80px {
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  position: absolute;
+}
+.dot:nth-of-type(1) {
+  left: -5px;
+  top: -5px;
+}
+.dot:nth-of-type(2) {
+  right: -5px;
+  top: -5px;
+}
+.dot:nth-of-type(3) {
+  left: -5px;
+  bottom: -5px;
+}
+.dot:nth-of-type(4) {
+  right: -5px;
+  bottom: -5px;
 }

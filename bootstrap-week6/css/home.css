@@ -36,28 +36,6 @@
   align-items: center;
   padding: 32px 24px;
 }
-.banner .dot {
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  position: absolute;
-}
-.banner .dot:nth-of-type(1) {
-  left: -5px;
-  top: -5px;
-}
-.banner .dot:nth-of-type(2) {
-  right: -5px;
-  top: -5px;
-}
-.banner .dot:nth-of-type(3) {
-  left: -5px;
-  bottom: -5px;
-}
-.banner .dot:nth-of-type(4) {
-  right: -5px;
-  bottom: -5px;
-}
 .banner h2 {
   font-weight: bold;
   font-size: 72px;
@@ -441,12 +419,6 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
-}
-
-.green-line {
-  height: 3px;
-  width: 50px;
-  background-color: #62DB54;
 }
 
 .text-wrap {

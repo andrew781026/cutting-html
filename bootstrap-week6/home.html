@@ -20,14 +20,15 @@
 
     <!-- custom css -->
     <link href="css/custom.css" rel="stylesheet">
+
+    <!-- page css -->
+    <link href="css/home.css" rel="stylesheet">
+
     <title>ＴＲＥＥ 程式家教~~</title>
 
 </head>
 
 <body>
-
-<!-- page css -->
-<link href="css/home.css" rel="stylesheet">
 
 <!-- put the header here -->
 <!-- LV2(80、100%獎品門檻)：至少做兩頁含 RWD，其中一頁必須為首頁 -->
@@ -56,10 +57,7 @@
 
 <div class="bg-home d-flex justify-content-center align-items-center">
     <div class="banner">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot" v-for="n in 4" :key="n"></div>
         <h2 class="colorful-text">全台最豐富的程式家教</h2>
         <h2>在實踐中化理想為現實</h2>
         <p class="mt-4">全台最專業師資｜到府程式家教｜客製化課程</p>

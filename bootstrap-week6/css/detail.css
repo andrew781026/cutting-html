@@ -76,9 +76,36 @@ h4.main-title {
 }
 
 .course-card {
-  padding: 48px;
+  padding: 32px;
   border-radius: 24px;
   background-color: #2D2D2D;
+}
+.course-card .desc {
+  font-size: 16px;
+}
+.course-card .title {
+  font-size: 18px;
+  display: flex;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+.course-card .title::before {
+  content: "";
+  height: 26px;
+  width: 3px;
+  background-color: #62DB54;
+}
+.course-card .item {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  gap: 8px;
+}
+.course-card .item::before {
+  content: "";
+  height: 5px;
+  width: 5px;
+  background-color: #62DB54;
 }
 
 .teacher-card {

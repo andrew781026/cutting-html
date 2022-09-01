@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- fonts - Azeret Mono & Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+
+    <!-- custom css -->
+    <link href="css/custom.css" rel="stylesheet">
+    <title>基礎前端 - HTML</title>
+
+</head>
+
+<body>
+<!-- page css -->
+<link href="css/detail.css" rel="stylesheet">
+
+<!-- put the header here -->
+<!-- layout/_header.html -->
+<header>
+  <nav class='navbar navbar-dark bg-dark px-4'>
+    <div class='container-fluid'>
+      <a class='navbar-brand' href='#' style='height: 42px'>
+        <img src='imgs/logo.svg' alt='logo' class='h-100'>
+      </a>
+      <div class='d-flex gap-4'>
+        <a class='nav-link text-white' href='#'>首頁</a>
+        <a class='nav-link text-white' href='#'>課程介紹</a>
+        <a class='nav-link text-white d-flex gap-1' href='#'>
+          <span class='material-icons'>
+            account_circle
+          </span>
+          登入
+        </a>
+      </div>
+    </div>
+    <!-- Navbar content -->
+  </nav>
+  <div class='colorful-line'></div>
+</header>
+
+<div class="bg-home d-flex justify-content-center align-items-center">
+    <div class="banner">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <h2 class="colorful-text">全台最豐富的程式家教</h2>
+        <h2>在實踐中化理想為現實</h2>
+        <p class="mt-4">全台最專業師資｜到府程式家教｜客製化課程</p>
+    </div>
+</div>
+
+<div class="w-100 bg-black-500">
+    <div class="container">
+        <!-- https://getbootstrap.com/docs/5.0/utilities/display/ -->
+        <!-- .d-flex .d-md-none = 在 xs 以下顯示 -->
+        <div class="d-flex d-md-none row flex-column align-items-center pb-4">
+            <h2 class="text-center mb-4">手把手帶你</h2>
+            <h2 class="text-center mb-4">親自到家教到會</h2>
+            <div class="green-line mb-4"></div>
+        </div>
+        <div class="row g-4 mx-0">
+            <!-- .d-none .d-md-flex = 在 md 以上顯示 -->
+            <div class="col d-none d-md-flex">
+                <div class="text-wrap">
+                    <p>手把手帶你</p>
+                    <p>親自到家教到會</p>
+                    <div class="green-line"></div>
+                </div>
+            </div>
+            <div class="col" v-for="feature in features" :key="feature.title">
+                <div class="card feature-card">
+                    <span class="material-icons md-48">
+                        {{feature.icon}}
+                    </span>
+                    <h6 class="card-subtitle py-4">{{feature.title}}</h6>
+                    <span class="card-text">{{feature.desc_1}}</span>
+                    <span class="card-text">{{feature.desc_2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-100 bg-black-700">
+    <div class="container">
+        <div class="row d-flex flex-column align-items-center pb-4">
+            <h2 class="text-center mb-4">預期上課流程</h2>
+            <div class="green-line mb-4"></div>
+        </div>
+        <div class="row gx-4 gy-5 mx-0">
+            <div class="col" v-for="flow in flows" :key="flow.number">
+                <div class="card flow-card" :data-number="flow.number">
+                    <h6 class="card-subtitle py-4">{{flow.title}}</h6>
+                    <span class="card-text">{{flow.desc_1}}</span>
+                    <span class="card-text">{{flow.desc_2}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-100 bg-black-500 py-80px">
+    <div class="d-flex flex-column align-items-center pb-4">
+        <h2 class="text-center mb-4">你想要學習的程式，都在這裡</h2>
+        <div class="green-line mb-4"></div>
+    </div>
+    <div class="d-flex gap-3 px-4 overflow-hidden">
+        <div class="language-card" v-for="language in languages" :key="language">
+            {{language}}
+        </div>
+    </div>
+</div>
+<div class="w-100 bg-black-900">
+    <div class="container">
+        <div class="row d-flex flex-column align-items-center pb-4">
+            <h2 class="text-center mb-4">熱門推薦課程</h2>
+            <div class="green-line mb-4"></div>
+        </div>
+        <div class="row g-4 mx-0">
+            <div class="col" v-for="course in courses" :key="course.id">
+                <div class="card course-card">
+                    <div class="teacher">
+                        <img class="teacher-avatar" :src="course.teacher.avatar" alt="avatar"/>
+                        <span class="teacher-name">{{course.teacher.name}}</span>
+                    </div>
+                    <h6 class="title">{{course.title}}</h6>
+                    <div class="info">
+                        <span class="category">{{course.category}}</span>
+                        <span class="desc">{{course.desc}}</span>
+                    </div>
+                    <div class="gray-line"></div>
+                    <div class="buy">
+                        <span class="minute">{{course.minute}}</span>
+                        <span class="price">{{course.price}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn colorful-btn">所有課程列表</button>
+        </div>
+    </div>
+</div>
+<div class="w-100 bg-black-700">
+    <div class="row g-0">
+        <div class="col" v-for="info in infos" :key="info.title">
+            <div class="info-card" :style="{ backgroundImage: info.bg }">
+                <div class="mask"></div>
+                <span class="material-icons icon md-30">
+                    {{info.icon}}
+                </span>
+                <h6 class="card-subtitle py-4">{{info.title}}</h6>
+                <div class="info-line"></div>
+                <span class="card-text">{{info.desc_1}}</span>
+                <span class="card-text">{{info.desc_2}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="w-100 bg-black-700">
+    <div class="container">
+        <div class="row d-flex flex-column align-items-center pb-4">
+            <h2 class="text-center mb-4">文章分享</h2>
+            <div class="green-line mb-4"></div>
+        </div>
+        <div class="row g-4 mx-0">
+            <div class="col" v-for="article in articles" :key="article.title">
+                <div class="card article-card">
+                    <div class="corner"></div>
+                    <div class="corner"></div>
+                    <div class="corner"></div>
+                    <div class="corner"></div>
+                    <img :src="article.img" alt="logo">
+                    <h6 class="title">{{article.title}}</h6>
+                    <span class="desc">{{article.desc}}</span>
+                    <span class="more">MORE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="w-100 bg-black-900 bg-share">
+    <div class="container">
+        <div class="row d-flex flex-column align-items-center pb-4">
+            <h2 class="text-center">專屬你的學習課程</h2>
+            <h2 class="text-center mb-4">超過 3000 位學員得到了程式超能力</h2>
+            <div class="green-line mb-4"></div>
+        </div>
+
+        <div class="row gx-0 gy-4 share-wrap d-flex align-items-end mx-3">
+            <div class="col-12 col-md-8">
+                <div class="share">
+                    <div class="bg-line"></div>
+                    <img src="./imgs/share.jpg" alt="share">
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="comment">
+                    <img class="avatar" src="./imgs/student01.jpg" alt="share">
+                    <h6 class="title">老師很有耐心</h6>
+                    <span class="desc">老師手把手的細心教學，用手繪圖，以淺顯易懂的方式，讓零網頁基礎的我也能快速了解網頁的架構與原理，學網頁變得有趣多了！</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="w-100 bg-black-900">
+    <div class="container d-flex">
+        <div class="join-card">
+            <span class="material-icons md-80">
+                menu_book
+            </span>
+            <div class="desc">
+                <h6>加入我們成為導師</h6>
+                <span>歡迎各大程式大神加入我們，用知識在世界留下一點影響力。</span>
+            </div>
+            <button class="btn btn-outline-light">立即預約</button>
+        </div>
+    </div>
+</div>
+
+<!-- layout/_footer.html -->
+<footer>
+  Coding Home © 2022 All Rights Reserved
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.0.5/dist/vue.global.prod.js"></script>
+<script>
+    const {createApp} = Vue;
+
+    const App = {
+        data() {
+
+            return {
+                features: [
+                    {
+                        icon: 'code',
+                        title: '超過 100 種專業課程',
+                        desc_1: '學習標準化的電腦形式語言',
+                        desc_2: '培養運算思維和邏輯素養',
+                    },
+                    {
+                        icon: 'rocket_launch',
+                        title: '高效學習',
+                        desc_1: '客製化專屬課表',
+                        desc_2: '讓學習變簡單',
+                    },
+                    {
+                        icon: 'place',
+                        title: '指定地點',
+                        desc_1: '專業老師到你指定的地點',
+                        desc_2: '一對一高效學習',
+                    },
+                ],
+                flows: [
+                    {
+                        number: '01',
+                        title: '預約',
+                        desc_1: '線上預約指定課程與老師',
+                        desc_2: '由老師安排專屬課程',
+                    },
+                    {
+                        number: '02',
+                        title: '付款',
+                        desc_1: '支援各種支付方式',
+                        desc_2: '提供12期分期付款',
+                    },
+                    {
+                        number: '03',
+                        title: '上課',
+                        desc_1: '地點由您指定',
+                        desc_2: '密集性一對一教學',
+                    },
+                    {
+                        number: '04',
+                        title: '提供滿意度',
+                        desc_1: '提供課程滿意度及回饋',
+                        desc_2: '讓我們持續成長與進步',
+                    },
+                ],
+                languages: [
+                    "JavaScript",
+                    "HTML/CSS",
+                    "SQL",
+                    "Java",
+                    "T-SQL",
+                    "Bash/Shell",
+                    "Python",
+                    "PHP",
+                    "C++",
+                    "C#",
+                    ".NET",
+                    "GO",
+                    "RUST",
+                    "DOCKER-COMPOSE",
+                    "KUBERNETES",
+                ],
+                courses: [
+                    {
+                        id: 1,
+                        teacher: {
+                            name: 'Belinda',
+                            avatar: './imgs/teacher01.jpg',
+                        },
+                        title: '基礎前端 - HTML',
+                        category: '前端語言',
+                        desc: '帶領無基礎的平民老百姓，從最基礎的 HTML 語法出發，使用最淺顯易懂的語言與生活隨處可見的例子...',
+                        price: 'NT$1600',
+                        minute: '50分鐘',
+                    },
+                    {
+                        id: 2,
+                        teacher: {
+                            name: 'Guava',
+                            avatar: './imgs/teacher02.jpg',
+                        },
+                        title: '2022 Python 全攻略｜從入門到實務',
+                        category: '後端語言',
+                        desc: 'Python支援多種程式設計範式，包括函數式、指令式、反射式、結構化和物件導向程式設計，它擁有動態...',
+                        price: 'NT$2200',
+                        minute: '50分鐘',
+                    },
+                    {
+                        id: 3,
+                        teacher: {
+                            name: 'Joe',
+                            avatar: './imgs/teacher03.jpg',
+                        },
+                        title: '活用 Line Bot ｜APP 開發到上架完整實戰攻略',
+                        category: '行動應用開發',
+                        desc: 'Line Bot 可用於實用的目的，如客戶服務或資訊獲取，有些聊天機器人會搭載自然語言處理系統，但大多簡...',
+                        price: 'NT$1800',
+                        minute: '50分鐘',
+                    },
+                    {
+                        id: 4,
+                        teacher: {
+                            name: 'Lina',
+                            avatar: './imgs/teacher04.jpg',
+                        },
+                        title: 'Linux 零基礎七天入門｜入門到實務',
+                        category: '作業系統與伺服器',
+                        desc: 'Linux是一種自由和開放原始碼的類UNIX作業系統，作業系統中包含了許多使用者圖形介面和其他實用...',
+                        price: 'NT$1100',
+                        minute: '50分鐘',
+                    },
+                ],
+                infos: [
+                    {
+                        icon: 'forum',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info01.jpg")',
+                        title: '對症下藥，專案製作',
+                        desc_1: '除了可以瘋狂提問之外',
+                        desc_2: '還有機會一起完成專案',
+                    },
+                    {
+                        icon: 'tips_and_updates',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info02.jpg")',
+                        title: '激發你的學習潛力',
+                        desc_1: '進度制課程安排&個人化學習建議',
+                        desc_2: '有效管理你的學習動力',
+                    },
+                    {
+                        icon: 'thumb_up',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info03.jpg")',
+                        title: '學習效率',
+                        desc_1: '針對學員狀況調整內容與步調',
+                        desc_2: '學習精準最有效',
+                    },
+                    {
+                        icon: 'supervisor_account',
+                        bg: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./imgs/info04.jpg")',
+                        title: '一對一指導',
+                        desc_1: '針對目的進行客製化課程安排',
+                        desc_2: '快速的學以致用',
+                    },
+
+                ],
+                articles: [
+                    {
+                        img: './imgs/article01.jpg',
+                        title: '2022 前端開發者學習地圖',
+                        desc: '轉職為前端的這條職業路上該如何發展？本篇為前端開發者提供學習地圖參考',
+                    },
+                    {
+                        img: './imgs/article02.jpg',
+                        title: '軟體工程師有哪些類別',
+                        desc: '軟體工程師領域廣闊，許多人仍然對此相關職務感到陌生，本篇就介紹主流的軟體工程師職務',
+                    },
+                    {
+                        img: './imgs/article03.jpg',
+                        title: '免費 25 小時前端教學資源',
+                        desc: '這篇文章規劃了適合「前端工程師」的學習地圖，讓新進的學生了解如何選擇課程',
+                    },
+                ],
+            }
+        },
+    }
+
+    createApp(App).mount('body');
+</script>
+
+</body>
+</html>

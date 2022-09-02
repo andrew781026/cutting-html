@@ -1,15 +1,54 @@
 header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav.navbar {
-    height: 90px;
+  height: 90px;
 }
 
 .colorful-line {
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to left, #09ACF5 0%, #09ACF5 49.99%, #62DB54 50%, #62DB54 100%);
+}
+
+.toggler {
+  height: 32px;
+  width: 32px;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+
+  .green-line {
+    position: absolute;
+    top: 50%;
     width: 100%;
     height: 2px;
-    background-image: linear-gradient(to left, #09ACF5 0%, #09ACF5 49.99%, #62DB54 50%, #62DB54 100%);
+    background-color: #62DB54;
+    transition: all 0.3s linear;
+
+    &:first-child {
+      transform: translateY(-4px) rotate(0);
+    }
+
+    &:last-child {
+      transform: translateY(4px) rotate(0);
+    }
+  }
+
+  // refs : https://codepen.io/Tkashiro/pen/jOBrXx?editors=0100
+  &:not(.collapsed) {
+    .green-line {
+
+      &:first-child {
+        transform: translateY(0) rotate(45deg);
+      }
+
+      &:last-child {
+        transform: translateY(0) rotate(-45deg);
+      }
+    }
+  }
 }

@@ -54,6 +54,10 @@ jobs:
           npm run build
           npm run generate
 
+      # list all files
+      - name: list all files
+        run: cd dist && ls -la
+
       # use actions-gh-pages to deploy dist to gh-pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

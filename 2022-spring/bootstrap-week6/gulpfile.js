@@ -59,6 +59,14 @@ const makeFn = (displayName, description, flags, fn) => {
 
 const cleanDest = () => del([envs.browserDir]);
 
+const errorWrapper = fn => (...args) => {
+    try {
+        return fn(...args)
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 const watch = () => {
 
     console.log('watch');
@@ -68,19 +76,19 @@ const watch = () => {
         // file change
         watcher.on('change', (path, stat) => {
             console.log(`${actionFn.name} file - ${path} changed`);
-            actionFn(null, {path, stat, type: 'change'});
+            errorWrapper(actionFn)(null, {path, stat, type: 'change'});
         });
 
         // add file
         watcher.on('add', (path, stat) => {
             console.log(`${actionFn.name} file - ${path} added`);
-            actionFn(null, {path, stat, type: 'add'});
+            errorWrapper(actionFn)(null, {path, stat, type: 'add'});
         });
 
         // delete file
         watcher.on('unlink', (path, stat) => {
             console.log(`${actionFn.name} file - ${path} delete`);
-            actionFn(null, {path, stat, type: 'delete'});
+            errorWrapper(actionFn)(null, {path, stat, type: 'delete'});
         });
     };
 

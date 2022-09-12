@@ -20,7 +20,7 @@ const browserSync = require('browser-sync').create();
 const envs = {
     browserDir: './dist',
     input: {
-        html: './src/**/*.{html,ejs}',
+        html: './src/**/[^_]*.{html,ejs}',
         image: './src/imgs/**/*',
         scss: './src/scss/[^_]*.scss',
     },
@@ -121,6 +121,7 @@ const mergeHTML = (cb, file) => {
         fs.mkdirSync(outputFolder, {recursive: true});
     }
 
+    // 刪除檔案時的相關處理
     if (file && file.type === 'delete') {
         const fileName = path.basename(file.path);
         return fs.unlinkSync(path.resolve(outputFolder, fileName));
@@ -181,6 +182,7 @@ const mergeHTML = (cb, file) => {
         fs.writeFileSync(outputPath, singleHtml, 'utf-8');
     };
 
+    // _ 開頭的檔案不做編譯 , 當作其他檔案的引入檔案
     const isLayout = file ? path.basename(file.path).startsWith('_') : false;
 
     if (file && isLayout) {
@@ -196,8 +198,10 @@ const mergeHTML = (cb, file) => {
             return new RegExp(layoutName, 'g').test(fileData);
         };
 
-        // 找出哪些檔案有引用此檔案，並重新編譯那些檔案
+        // 取得全部的 html 相關檔案
         const files = glob.sync(envs.input.html);
+
+        // 找出哪些檔案有引用此檔案，並重新編譯那些檔案
         files
             .filter(notLayout)
             .filter(containTarget(path.basename(file.path)))

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "gulp": "gulp",
+    "dev": "gulp dev",
     "build": "gulp build"
   },
   "keywords": [],

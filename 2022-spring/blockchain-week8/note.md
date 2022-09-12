@@ -28,3 +28,14 @@
 #### masonry 瀑布流
 
 - https://github.com/desandro/masonry
+
+#### vue-ssr
+
+第八週的作業用 vue-ssr 來做
+
+- [Vue.js Server-Side Rendering Guide](https://v2.ssr.vuejs.org/)
+- [vue 官網 - SSR](https://vuejs.org/guide/scaling-up/ssr.html)
+- [Vue3 Server Render 手把手帶你搭建](https://johnnywang1994.github.io/book/articles/js/vue3-ssr.html#server-for-rendering)
+- [vue3-example-ssr](https://github.com/shenron/vue3-example-ssr)
+
+> 將 `"type": "module"` 放到 `package.json` 中 , Node 就可以使用 import 語法 (不過 require 會不能使用)

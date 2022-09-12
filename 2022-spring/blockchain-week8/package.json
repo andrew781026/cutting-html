@@ -3,9 +3,12 @@
   "version": "0.0.1",
   "description": "the online course of template",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "gulp": "gulp",
-    "build": "gulp build"
+    "build": "gulp build",
+    "start": "gulp watch",
+    "ssr": "node test/vue-ssr.js"
   },
   "keywords": [],
   "author": "andrew",
@@ -19,7 +22,8 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "gulp-squoosh": "^0.9.0",
-    "sass": "^1.54.4"
+    "sass": "^1.54.4",
+    "vue": "^3.2.39"
   },
   "devDependencies": {
     "gulp-plumber": "^1.2.1"

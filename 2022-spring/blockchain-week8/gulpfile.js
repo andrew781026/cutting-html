@@ -4,16 +4,11 @@ const del = require('del');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-const frontMatter = require('front-matter');
-
-// doc : https://www.npmjs.com/package/gulp-plumber
-const plumber = require('gulp-plumber');
 
 const sass = require('gulp-sass')(require('sass'));
 
 // doc : https://www.npmjs.com/package/gulp-squoosh
 const gulpSquoosh = require('gulp-squoosh');
-const strFillTemplate = require('./gulpUtils/strFillTemplate.js');
 
 const browserSync = require('browser-sync').create();
 
@@ -25,7 +20,6 @@ const envs = {
         scss: './src/scss/[^_]*.scss',
     },
     output: {
-        css: './dist/css',
         html: './dist',
         image: './dist/imgs',
     },
@@ -88,17 +82,6 @@ const watch = () => {
     wrapWatcher(gulp.watch(envs.watch.html), mergeHTML);
 };
 
-function minifySCSS() {
-
-    console.log('minifySCSS');
-    return gulp.src(envs.input.scss)
-        .pipe(plumber({
-            errorHandler: err => console.error(err),
-        }))
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(envs.output.css));
-}
-
 function browser() {
     browserSync.init({
         server: {
@@ -121,54 +104,11 @@ const mergeHTML = (cb, file) => {
         fs.mkdirSync(outputFolder, {recursive: true});
     }
 
+    // 刪除檔案的對應處理
     if (file && file.type === 'delete') {
         const fileName = path.basename(file.path);
         return fs.unlinkSync(path.resolve(outputFolder, fileName));
     }
-
-    /**
-     * 將 layout 中對應的檔案內容給取出，對應的參數由 frontMatter 傳入
-     * @param {object} attributes  { title: "Just hack'n", description: 'Nothing to see here' }
-     * @param {array} attributes.layout  [ { header: 'layout/index.ejs' }, { footer: 'layout/footer.ejs' } ]
-     * @returns {{}|*}
-     */
-    const parseLayoutInfo = (attributes) => {
-
-        const layoutArr = attributes.layout;
-
-        if (!Array.isArray(layoutArr)) return {};
-        else return layoutArr.reduce((pre, curr) => {
-
-            const key = Object.keys(curr)[0];
-            const filePath = path.resolve(curr[key]);
-            const fileData = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8').toString() : '';
-            const value = strFillTemplate(fileData, attributes);
-
-            return {
-                ...pre,
-                [key]: value,
-            };
-
-        }, {});
-    };
-
-    /**
-     * 將 html
-     * @param filePath
-     * @returns {any}
-     */
-    const mergeSingleHtml = filePath => {
-
-        const fileData = fs.readFileSync(filePath, 'utf-8').toString();
-        const frontMatterResult = frontMatter(fileData);
-
-        const newAttributes = {
-            ...frontMatterResult.attributes,
-            ...parseLayoutInfo(frontMatterResult.attributes),
-        };
-
-        return strFillTemplate(frontMatterResult.body, newAttributes);
-    };
 
     const compileSingleHtml = filePath => {
 

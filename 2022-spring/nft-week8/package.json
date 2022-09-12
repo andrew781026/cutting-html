@@ -12,6 +12,9 @@
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
+  "pre-commit": [
+    "lintfix"
+  ],
   "dependencies": {
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
@@ -30,6 +33,7 @@
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
     "postcss": "^8.4.4",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.5.1"
   }
 }

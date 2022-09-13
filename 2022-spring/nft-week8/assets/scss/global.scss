@@ -8,9 +8,69 @@
 
 // Include any default variable overrides here (though functions won't be available)
 
-@import "_custom.scss";
-@import "node_modules/bootstrap/scss/bootstrap";
+@import '_custom.scss';
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Paytone+One&family=Squada+One&display=swap');
 
 body {
-  font-family: 'Azeret Mono', 'Noto Sans TC', monospace, sans-serif;
+  font-family: 'Squada One', 'Noto Sans TC', cursive, sans-serif;
+  line-height: 1.5;
+}
+
+.number {
+  font-family: 'Paytone One', sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.container {
+  padding: 40px 0;
+}
+
+.border-start.border-dark {
+  border-color: #000 !important;
+}
+
+.border-end.border-dark {
+  border-color: #000 !important;
+}
+
+.btn.btn-orange {
+  padding: 8px 48px;
+  font-size: 16px;
+  border: 1px solid #000;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  border-radius: 0;
+  background-color: $white;
+
+  &:hover {
+    background-color: $orange;
+    color: $white;
+    border-color: $black;
+
+    &::before {
+      border-color: transparent transparent $black transparent;
+    }
+  }
+
+  // 三角形產生器 : http://apps.eky.hk/css-triangle-generator/zh-hant
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 16px 16px;
+    border-color: transparent transparent $orange transparent;
+    transition: all 0.3s;
+  }
 }

@@ -4,11 +4,16 @@
 // 🌰 舉例：
 
 $primary: #ffd019;
-$secondary: #E6553B;
+$secondary: #e6553b;
 $gray: #808080;
+$orange: #e6553b;
+$white: #fff;
+$black: #000;
 
 // 將「primary」換成黃色
-$theme-colors: (primary: #ffd019);
+$theme-colors: (
+  primary: #ffd019,
+);
 
 // 將連結換成黃色，並移除 hover 的底線
 // $link-color: #ffd019;

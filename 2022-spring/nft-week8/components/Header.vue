@@ -3,7 +3,7 @@
     <nav class="navbar p-0">
       <div class="container flex-nowrap">
         <a class="navbar-brand" href="#">
-          <img src="imgs/logo.svg" alt="logo"/>
+          <img src="imgs/logo.svg" alt="logo" />
         </a>
         <div
           class="d-none d-md-flex border-end border-start border-dark flex-grow-1"
@@ -18,7 +18,7 @@
           <li class="border-end border-dark">探索</li>
           <li class="border-end border-dark">市值</li>
           <li>
-            <font-awesome-icon icon="fa-solid fa-wallet"/>
+            <font-awesome-icon icon="fa-solid fa-wallet" />
           </li>
         </ul>
         <div class="d-flex align-items-center d-md-none">

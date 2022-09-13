@@ -3,9 +3,7 @@
     <span class="eng">{{ eng }}</span>
     <span class="cht">{{ cht }}</span>
     <div class="flex-grow-1"></div>
-    <div class="more">
-      MORE
-    </div>
+    <div class="more">MORE</div>
   </div>
 </template>
 

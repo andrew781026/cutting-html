@@ -7,13 +7,13 @@
           <div class="img-box">
             <div class="number">{{ item.id }}</div>
             <OrangeButton class="orange-button">MORE</OrangeButton>
-            <img :src="item.img" alt="NFT"/>
+            <img :src="item.img" alt="NFT" />
           </div>
           <div class="title">{{ item.title }}</div>
           <div class="desc">
             <div class="author">{{ item.author }}</div>
             <div class="price">
-              <font-awesome-icon icon="fa-brands fa-ethereum"/>
+              <font-awesome-icon icon="fa-brands fa-ethereum" />
               {{ item.price }}
             </div>
           </div>
@@ -26,14 +26,14 @@
           <div class="number">{{ item.id }}</div>
           <div class="img-box">
             <div class="more">MORE</div>
-            <img :src="item.img" alt="NFT"/>
+            <img :src="item.img" alt="NFT" />
           </div>
           <div class="flex-grow-1">
             <div class="title">{{ item.title }}</div>
             <div class="desc">
               <div class="author">{{ item.author }}</div>
               <div class="price">
-                <font-awesome-icon icon="fa-brands fa-ethereum"/>
+                <font-awesome-icon icon="fa-brands fa-ethereum" />
                 {{ item.price }}
               </div>
             </div>
@@ -109,7 +109,6 @@ export default {
 @import '~assets/scss/_custom.scss';
 
 .box {
-
   .title {
     padding: 16px;
     font-size: 18px;
@@ -125,7 +124,6 @@ export default {
 }
 
 @mixin small_box {
-
   display: flex;
   border: 1px solid $black;
 

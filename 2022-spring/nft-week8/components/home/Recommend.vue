@@ -6,7 +6,7 @@
           <h2>Recommend</h2>
           <p>推薦系列</p>
         </div>
-        <img src="imgs/art01.jpg" alt="logo"/>
+        <img src="imgs/art01.jpg" alt="logo" />
         <div class="card">
           <div class="name">Kemus Wu</div>
           <div class="title">瞳孔:流動的脈絡</div>
@@ -28,7 +28,7 @@
             </div>
             <button class="btn btn-orange">MORE</button>
           </div>
-          <img src="imgs/art02.jpg" alt="logo"/>
+          <img src="imgs/art02.jpg" alt="logo" />
         </div>
       </div>
       <div class="col-12 col-lg-6">
@@ -41,7 +41,7 @@
             </div>
             <button class="btn btn-orange">MORE</button>
           </div>
-          <img src="imgs/art21.jpg" alt="logo"/>
+          <img src="imgs/art21.jpg" alt="logo" />
         </div>
       </div>
     </div>

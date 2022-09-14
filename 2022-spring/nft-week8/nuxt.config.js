@@ -24,14 +24,14 @@ export default {
       {
         name: 'index',
         path: '/',
-        component: 'pages/index.vue'
+        component: 'pages/index.vue',
       },
       {
         name: 'explore',
         path: '/explore',
-        component: 'pages/explore.vue'
-      }
-    ]
+        component: 'pages/explore.vue',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

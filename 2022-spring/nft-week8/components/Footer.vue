@@ -23,7 +23,7 @@ footer {
 
   &::before {
     position: absolute;
-    top:4px;
+    top: 4px;
     left: 0;
     content: '';
     display: flex;

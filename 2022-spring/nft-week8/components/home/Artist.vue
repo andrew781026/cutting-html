@@ -59,26 +59,26 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/scss/_custom.scss';
 
-.artist{
+.artist {
   display: flex;
   gap: 24px;
   margin-top: 48px;
 
-  .img-box{
+  .img-box {
     width: 50vw;
     display: flex;
     align-items: center;
 
-    &.disabled{
+    &.disabled {
       width: 20vw;
       filter: grayscale(1);
 
-      img{
+      img {
         height: 60%;
       }
     }
 
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -86,18 +86,18 @@ export default {
   }
 }
 
-.indicators{
+.indicators {
   display: flex;
-  gap:8px;
+  gap: 8px;
   justify-content: center;
   margin: 48px;
 
-  .dot{
+  .dot {
     height: 8px;
     width: 8px;
     background-color: $black;
 
-    &.active{
+    &.active {
       width: 16px;
       background-color: $orange;
     }

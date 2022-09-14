@@ -61,6 +61,7 @@ img {
   width: auto;
   height: 100%;
   margin: 0;
+  object-fit: cover;
 }
 
 .other-box {

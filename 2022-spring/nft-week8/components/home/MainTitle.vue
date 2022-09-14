@@ -1,26 +1,26 @@
 <template>
   <div class="main-title">
     <span class="eng">{{ eng }}</span>
-    <span class="cht">{{ cht }}</span>
+    <span class="cht d-none d-sm-inline">{{ cht }}</span>
     <div class="flex-grow-1"></div>
-    <div class="more">MORE</div>
+    <OrangeButton>MORE</OrangeButton>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MainTitle',
+  name: "MainTitle",
   props: {
     eng: {
       type: String,
-      required: true,
+      required: true
     },
     cht: {
       type: String,
-      required: true,
-    },
-  },
-}
+      required: true
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -43,22 +43,14 @@ export default {
     font-size: 48px;
   }
 
-  .more {
-    font-size: 16px;
-    padding: 8px 48px;
+  .btn.btn-orange {
+    border-width: 1px 1px 0 1px;
+    border-color: transparent;
+    background-color: transparent;
 
-    // 三角形產生器 : http://apps.eky.hk/css-triangle-generator/zh-hant
-    &::before {
-      content: '';
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 0 16px 16px;
-      border-color: transparent transparent $orange transparent;
-      transition: all 0.3s;
+    &:hover {
+      border-color: $black;
+      background-color: $orange;
     }
   }
 }

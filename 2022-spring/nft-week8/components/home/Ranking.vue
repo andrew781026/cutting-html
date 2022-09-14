@@ -2,30 +2,17 @@
   <div class="container">
     <MainTitle cht="市價排行榜" eng="Ranking"></MainTitle>
     <div class="row g-4 mt-5">
-      <div v-for="item in bigRankings" :key="item.id" class="col-12 col-md-4">
-        <div class="box big-box">
-          <div class="img-box">
-            <div class="number">{{ item.id }}</div>
-            <OrangeButton class="orange-button">MORE</OrangeButton>
-            <img :src="item.img" alt="NFT" />
-          </div>
-          <div class="title">{{ item.title }}</div>
-          <div class="desc">
-            <div class="author">{{ item.author }}</div>
-            <div class="price">
-              <font-awesome-icon icon="fa-brands fa-ethereum" />
-              {{ item.price }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row g-4 mt-3">
-      <div v-for="item in smallRankings" :key="item.id" class="col-12 col-md-4">
-        <div class="box small-box">
+      <div
+        v-for="item in rankings"
+        :key="item.id"
+        class="col-12 col-md-6 col-lg-4"
+      >
+        <div class="my-box" :class="[item.isMin && 'is-min']">
           <div class="number">{{ item.id }}</div>
           <div class="img-box">
             <div class="more">MORE</div>
+            <div class="number">{{ item.id }}</div>
+            <OrangeButton class="orange-button">MORE</OrangeButton>
             <img :src="item.img" alt="NFT" />
           </div>
           <div class="flex-grow-1">
@@ -54,7 +41,7 @@ export default {
   },
   data() {
     return {
-      bigRankings: [
+      rankings: [
         {
           id: 1,
           title: '散步遇到的女人',
@@ -76,14 +63,13 @@ export default {
           price: 300,
           img: 'imgs/art06.jpg',
         },
-      ],
-      smallRankings: [
         {
           id: 4,
           title: '追求者送我的花',
           author: 'Michael',
           price: 300,
           img: 'imgs/art13.jpg',
+          isMin: true,
         },
         {
           id: 5,
@@ -91,6 +77,7 @@ export default {
           author: 'Wei JJ',
           price: 300,
           img: 'imgs/art07.jpg',
+          isMin: true,
         },
         {
           id: 6,
@@ -98,6 +85,7 @@ export default {
           author: 'Even Lai',
           price: 300,
           img: 'imgs/art08.jpg',
+          isMin: true,
         },
       ],
     }
@@ -108,26 +96,10 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/scss/_custom.scss';
 
-.box {
-  .title {
-    padding: 16px;
-    font-size: 18px;
-    border-bottom: 1px solid $black;
-  }
-
-  .desc {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 16px;
-    font-size: 16px;
-  }
-}
-
 @mixin small_box {
   display: flex;
-  border: 1px solid $black;
 
-  .number {
+  > .number {
     display: flex;
     align-items: center;
     font-size: 24px;
@@ -145,6 +117,10 @@ export default {
       width: 100px;
       height: 100px;
       object-fit: cover;
+    }
+
+    .number {
+      display: none;
     }
 
     .more {
@@ -189,18 +165,28 @@ export default {
         display: flex;
         position: absolute;
       }
+
+      .orange-button {
+        display: none;
+      }
     }
   }
 }
 
-.big-box {
-  border: 1px solid $black;
+@mixin big_box {
+  > .number {
+    display: none;
+  }
 
   .img-box {
     cursor: pointer;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid $black;
+
+    .more {
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -249,7 +235,36 @@ export default {
   }
 }
 
-.small-box {
+.my-box {
+  border: 1px solid $black;
+
+  .title {
+    padding: 16px;
+    font-size: 18px;
+    border-bottom: 1px solid $black;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .desc {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  @include big_box;
+}
+
+.my-box.is-min {
   @include small_box;
+}
+
+@media (max-width: 768px) {
+  .my-box {
+    @include small_box;
+  }
 }
 </style>

@@ -94,5 +94,6 @@ export default {
   max-height: 800px;
   align-content: space-between;
   gap: 24px;
+  overflow-x: hidden;
 }
 </style>

@@ -29,7 +29,7 @@ export default {
       {
         name: 'explore',
         path: '/explore',
-        component: 'pages/user/explore.vue'
+        component: 'pages/explore.vue'
       }
     ]
   },

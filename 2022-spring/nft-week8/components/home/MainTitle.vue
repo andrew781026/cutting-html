@@ -9,18 +9,18 @@
 
 <script>
 export default {
-  name: "MainTitle",
+  name: 'MainTitle',
   props: {
     eng: {
       type: String,
-      required: true
+      required: true,
     },
     cht: {
       type: String,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

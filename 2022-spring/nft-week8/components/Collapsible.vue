@@ -7,22 +7,22 @@
 <script>
 // ref : https://www.w3schools.com/howto/howto_js_collapsible.asp
 export default {
-  name: "NuxtCollapsible",
+  name: 'NuxtCollapsible',
   props: {
     active: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     contentStyle() {
       return {
         maxHeight:
-          this.active && this.$el ? this.$el.scrollHeight + "px" : "0px"
-      };
-    }
-  }
-};
+          this.active && this.$el ? this.$el.scrollHeight + 'px' : '0px',
+      }
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

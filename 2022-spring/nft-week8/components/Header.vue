@@ -36,9 +36,7 @@
       <div class="collapse__menus">
         <div class="collapse__menuitem">探索</div>
         <div class="collapse__menuitem">市值</div>
-        <div class="collapse__menuitem">
-          連結錢包
-        </div>
+        <div class="collapse__menuitem">連結錢包</div>
       </div>
     </Collapsible>
   </header>
@@ -46,13 +44,13 @@
 
 <script>
 export default {
-  name: "NuxtHeader",
+  name: 'NuxtHeader',
   data() {
     return {
-      active: false
-    };
-  }
-};
+      active: false,
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -113,7 +111,6 @@ nav {
       border: 1px solid #000;
     }
   }
-
 }
 
 .search {

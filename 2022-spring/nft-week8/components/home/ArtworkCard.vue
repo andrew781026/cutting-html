@@ -11,7 +11,7 @@
           <OrangeButton class="align-self-end">MORE</OrangeButton>
         </div>
       </div>
-      <img :src="artwork.img" alt="">
+      <img :src="artwork.img" alt="" />
     </div>
     <div class="artwork-card__info">
       {{ artwork.name }}
@@ -21,14 +21,14 @@
 
 <script>
 export default {
-  name: "ArtworkCard",
+  name: 'ArtworkCard',
   props: {
     artwork: {
       type: Object,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

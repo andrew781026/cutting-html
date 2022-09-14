@@ -1,18 +1,16 @@
 <template>
-  <footer>
-    © ART NFT. All Rights Reserved
-  </footer>
+  <footer>© ART NFT. All Rights Reserved</footer>
 </template>
 
 <script>
 export default {
-  name: "NuxtFooter",
+  name: 'NuxtFooter',
   data() {
     return {
-      active: false
-    };
-  }
-};
+      active: false,
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

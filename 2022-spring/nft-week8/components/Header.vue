@@ -32,24 +32,32 @@
         </div>
       </div>
     </nav>
-    <Collapsible :active="active">
-      <div class="tt">GOOD JOB</div>
+    <Collapsible class="d-flex d-md-none bg-white" :active="active">
+      <div class="collapse__menus">
+        <div class="collapse__menuitem">探索</div>
+        <div class="collapse__menuitem">市值</div>
+        <div class="collapse__menuitem">
+          連結錢包
+        </div>
+      </div>
     </Collapsible>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'NuxtHeader',
+  name: "NuxtHeader",
   data() {
     return {
-      active: false,
-    }
-  },
-}
+      active: false
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/scss/_custom.scss';
+
 header {
   border-bottom: 1px solid #000;
   position: sticky;
@@ -59,6 +67,7 @@ header {
 
 nav {
   background-color: #fff;
+  z-index: 2;
 
   .container {
     height: 100px;
@@ -85,10 +94,26 @@ nav {
   }
 }
 
-.tt {
+.collapse__menus {
   width: 100%;
-  height: 100px;
-  background-color: #0a53be;
+  padding-bottom: 36px;
+  padding-left: 36px;
+  padding-right: 36px;
+  z-index: 2;
+  background-color: $white;
+
+  .collapse__menuitem {
+    padding: 24px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+
+    &:hover {
+      background-color: $orange;
+      color: $white;
+      border: 1px solid #000;
+    }
+  }
+
 }
 
 .search {

@@ -80,21 +80,11 @@ export default {
 
 .feature-wrap {
   border-top: 4px solid black;
-  border-bottom: 4px solid black;
 
   &::before {
     content: '';
     display: flex;
     margin-top: 4px;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-  }
-
-  &::after {
-    content: '';
-    display: flex;
-    margin-bottom: 4px;
     width: 100%;
     height: 1px;
     background-color: black;

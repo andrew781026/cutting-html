@@ -20,6 +20,18 @@ export default {
 
   router: {
     base: '/cutting-html/nft-week8/',
+    routes: [
+      {
+        name: 'index',
+        path: '/',
+        component: 'pages/index.vue'
+      },
+      {
+        name: 'explore',
+        path: '/explore',
+        component: 'pages/user/explore.vue'
+      }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

@@ -1,6 +1,23 @@
 <template>
   <div class="container">
     <MainTitle cht="熱門藝術家" eng="Artist"></MainTitle>
+    <div class="artist">
+      <div class="img-box disabled">
+        <img :src="artists[0].img" alt="artist" />
+      </div>
+      <div class="img-box">
+        <img :src="artists[1].img" alt="artist" />
+      </div>
+      <div class="img-box disabled">
+        <img :src="artists[2].img" alt="artist" />
+      </div>
+    </div>
+    <div class="indicators">
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
   </div>
 </template>
 
@@ -41,4 +58,49 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/scss/_custom.scss';
+
+.artist{
+  display: flex;
+  gap: 24px;
+  margin-top: 48px;
+
+  .img-box{
+    width: 50vw;
+    display: flex;
+    align-items: center;
+
+    &.disabled{
+      width: 20vw;
+      filter: grayscale(1);
+
+      img{
+        height: 60%;
+      }
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.indicators{
+  display: flex;
+  gap:8px;
+  justify-content: center;
+  margin: 48px;
+
+  .dot{
+    height: 8px;
+    width: 8px;
+    background-color: $black;
+
+    &.active{
+      width: 16px;
+      background-color: $orange;
+    }
+  }
+}
 </style>

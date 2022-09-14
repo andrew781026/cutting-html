@@ -4,7 +4,9 @@
     <Recommend />
     <Ranking />
     <Artist />
-    <Artwork />
+    <client-only>
+      <Artwork />
+    </client-only>
     <JoinUs />
     <Footer />
   </div>

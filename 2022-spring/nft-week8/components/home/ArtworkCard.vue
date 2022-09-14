@@ -35,7 +35,8 @@ export default {
 @import '~assets/scss/_custom.scss';
 
 .artwork-card {
-  width: 310px;
+  width: 300px;
+  margin-bottom: 24px;
 
   .artwork-card__img {
     width: 100%;

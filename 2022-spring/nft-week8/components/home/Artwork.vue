@@ -2,12 +2,12 @@
   <div class="container">
     <MainTitle cht="最新藝術品" eng="Artwork"></MainTitle>
     <div class="container">
-      <div class="masonry-with-flex">
+      <div class="masonry">
         <ArtworkCard
           v-for="artwork in artworks"
           :key="artwork.id"
           :artwork="artwork"
-        ></ArtworkCard>
+        />
       </div>
     </div>
   </div>
@@ -85,19 +85,28 @@ export default {
       ],
     }
   },
+  mounted() {
+    // 改用 require 引入，避免 windows undefined 錯誤
+    const Masonry = require('masonry-layout/dist/masonry.pkgd.min.js')
+    const ImagesLoaded = require('imagesloaded/imagesloaded.pkgd.min.js')
+
+    ImagesLoaded('.masonry', () => {
+      // eslint-disable-next-line no-new
+      new Masonry('.masonry', {
+        // options...
+        itemSelector: '.artwork-card',
+        gutter: 24,
+        fitWidth: true,
+      })
+    })
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/scss/_custom.scss';
 
-.masonry-with-flex {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 800px;
-  align-content: space-between;
-  gap: 24px;
-  overflow-x: hidden;
+.masonry {
+  margin: 0 auto;
 }
 </style>

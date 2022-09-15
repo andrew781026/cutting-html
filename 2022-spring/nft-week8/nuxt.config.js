@@ -19,7 +19,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 
       // Google font
-      { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Paytone+One&family=Squada+One&display=swap' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Paytone+One&family=Squada+One&display=swap',
+      },
     ],
   },
 

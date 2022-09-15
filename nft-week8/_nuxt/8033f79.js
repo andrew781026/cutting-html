@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{279:function(t,n,e){"use strict";e.r(n);var o={name:"OrangeButton"},c=e(37),component=Object(c.a)(o,(function(){return(0,this._self._c)("button",{staticClass:"btn btn-orange"},[this._t("default")],2)}),[],!1,null,"152ee4a9",null);n.default=component.exports}}]);

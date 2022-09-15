@@ -6,7 +6,7 @@
         <li v-for="artist in artists" :key="artist.id" class="swiper-slide">
           <div
             class="artist"
-            :style="`--artistImage:url(&quot;${artist.img}&quot;)`"
+            :style="`background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(&quot;${artist.img}&quot;)`"
           >
             <h3>{{ artist.name }}</h3>
             <div class="content">

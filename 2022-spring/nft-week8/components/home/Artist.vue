@@ -1,22 +1,27 @@
 <template>
   <div class="container">
     <MainTitle cht="熱門藝術家" eng="Artist"></MainTitle>
-    <div class="artist">
-      <div class="img-box disabled">
-        <img :src="artists[0].img" alt="artist" />
-      </div>
-      <div class="img-box">
-        <img :src="artists[1].img" alt="artist" />
-      </div>
-      <div class="img-box disabled">
-        <img :src="artists[2].img" alt="artist" />
-      </div>
-    </div>
-    <div class="indicators">
-      <div class="dot"></div>
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+    <div class="swiper">
+      <ul class="swiper-wrapper list-unstyled">
+        <li v-for="artist in artists" :key="artist.id" class="swiper-slide">
+          <div
+            class="artist"
+            :style="`--artistImage:url(&quot;${artist.img}&quot;)`"
+          >
+            <h3>{{ artist.name }}</h3>
+            <div class="content">
+              <p>
+                {{ artist.desc }}
+              </p>
+              <OrangeButton>MORE</OrangeButton>
+            </div>
+          </div>
+          <p class="mt-4 p-6 bg-white d-lg-none">
+            擁有個⼈獨樹⼀格的創作風格，作品觸及靈魂深處、探索未知宇宙，透過與大自然的溝通，探討著存在的本質。
+          </p>
+        </li>
+      </ul>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </template>
@@ -35,7 +40,7 @@ export default {
         {
           id: 1,
           img: 'imgs/artist01.jpg',
-          name: 'Sandro Botticelli',
+          name: 'Michael',
           desc: '以其超凡脫俗的神話場景而聞名。',
         },
         {
@@ -47,60 +52,51 @@ export default {
         {
           id: 3,
           img: 'imgs/artist03.jpg',
-          name: 'LEONARDO DA VINCI',
-          desc: '文藝復興時期的典型人物。他不僅留下了一系列充滿科學觀察和插圖的筆記本，而且還留下了跨越不同媒介的重要藝術遺產。從他的肖像畫《蒙娜麗莎》和《帶貂的女士》中可以看出他對暈染和明暗法等油畫技巧的掌握。前者仍然是世界上訪問量最大的藝術作品之一。',
+          name: 'Tim Brisko',
+          desc: '喜愛大自然，創作題材常見大山、大水、花草與樹木。',
+        },
+        {
+          id: 4,
+          img: 'imgs/artist04.jpg',
+          name: 'Alexandra',
+          desc: '喜愛大自然，創作題材常見大山、大水、花草與樹木。',
+        },
+        {
+          id: 5,
+          img: 'imgs/artist05.jpg',
+          name: 'Dizard',
+          desc: '喜愛大自然，創作題材常見大山、大水、花草與樹木。',
         },
       ],
     }
   },
+  mounted() {
+    // init Swiper:
+    this.swiper = new window.Swiper('.swiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      loop: true,
+      initialSlide: 1,
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 0,
+        depth: 200,
+        scale: 0.7,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    })
+  },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~assets/scss/_custom.scss';
 
-.artist {
-  display: flex;
-  gap: 24px;
-  margin-top: 48px;
-
-  .img-box {
-    width: 50vw;
-    display: flex;
-    align-items: center;
-
-    &.disabled {
-      width: 20vw;
-      filter: grayscale(1);
-
-      img {
-        height: 60%;
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-}
-
-.indicators {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin: 48px;
-
-  .dot {
-    height: 8px;
-    width: 8px;
-    background-color: $black;
-
-    &.active {
-      width: 16px;
-      background-color: $orange;
-    }
-  }
-}
+// import customized Swiper css
+@import '~assets/scss/swiper.scss';
 </style>

@@ -1,10 +1,11 @@
 <template>
   <div id="app">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <Header />
     <Recommend />
     <Ranking />
-    <Artist />
     <client-only>
+      <Artist />
       <Artwork />
     </client-only>
     <JoinUs />

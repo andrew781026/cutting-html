@@ -1,0 +1,80 @@
+@import '_custom.scss';
+@import 'swiper/swiper-bundle.css';
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-top: 72px;
+}
+
+.swiper-slide {
+  width: 50%;
+  height: 439px;
+}
+
+.swiper-slide-active .artist {
+  filter: grayscale(0);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3 {
+    width: 50%;
+    opacity: 1;
+    font-size: 80px;
+    line-height: 1.06;
+    color: $white;
+  }
+
+  .content {
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    p {
+      margin: 0;
+      width: 50%;
+      background-color: rgba($white, 0.85);
+      padding: 24px;
+    }
+  }
+}
+
+.artist {
+  height: 100%;
+  width: 100%;
+  filter: grayscale(1);
+  background-image: var(--artistImage);
+  background-size: cover;
+  background-position: center;
+
+  h3 {
+    opacity: 0;
+  }
+
+  .content {
+    opacity: 0;
+  }
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(10px);
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+    border-radius: 0;
+    background: $black;
+  }
+  .swiper-pagination-bullet-active {
+    width: 16px;
+    background: $orange;
+  }
+}

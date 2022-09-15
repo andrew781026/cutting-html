@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fcutting-html\u002Fnft-week8\u002F_nuxt\u002Fstatic\u002F1663228819",layout:"default",error:a,serverRendered:true,routePath:"\u002F",config:{_app:{basePath:"\u002Fcutting-html\u002Fnft-week8\u002F",assetsPath:"\u002Fcutting-html\u002Fnft-week8\u002F_nuxt\u002F",cdnURL:a}}}}(null));
